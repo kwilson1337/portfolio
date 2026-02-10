@@ -1,0 +1,71 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .outline {
+        stroke:#1a1a1a;
+        stroke-width:8;
+        stroke-linecap:round;
+        stroke-linejoin:round;
+      }
+      .brown { fill:#9c6235; }
+      .tan { fill:#f6ead1; }
+      .dark { fill:#6b3f1d; }
+      .yellow { fill:#f7c948; }
+      .black { fill:#1a1a1a; }
+      .white { fill:#ffffff; }
+    </style>
+  </defs>
+
+  <!-- K spine / hawk body -->
+  <rect x="210" y="120" width="90" height="300" rx="45"
+        class="brown outline"/>
+
+  <!-- Head -->
+  <circle cx="255" cy="120" r="75"
+          class="brown outline"/>
+
+  <!-- Face -->
+  <circle cx="255" cy="135" r="55"
+          class="tan outline"/>
+
+  <!-- Eyes -->
+  <circle cx="235" cy="130" r="14" class="black"/>
+  <circle cx="275" cy="130" r="14" class="black"/>
+
+  <!-- Eye highlights -->
+  <circle cx="240" cy="124" r="4" class="white"/>
+  <circle cx="280" cy="124" r="4" class="white"/>
+
+  <!-- Beak -->
+  <path d="
+    M255 145
+    c14 0 20 10 0 22
+    c-20 -12 -14 -22 0 -22z"
+    class="yellow outline"/>
+
+  <!-- Upper wing (K diagonal) -->
+  <g id="upperWing">
+    <path d="
+      M300 200
+      C380 150 440 120 480 120
+      C440 170 380 230 320 260
+      Z"
+      class="dark outline"/>
+  </g>
+
+  <!-- Lower wing (K diagonal) -->
+  <g id="lowerWing">
+    <path d="
+      M300 300
+      C380 360 440 400 480 430
+      C430 430 370 380 315 335
+      Z"
+      class="dark outline"/>
+  </g>
+
+  <!-- Feet (tiny, optional) -->
+  <rect x="235" y="420" width="16" height="40" rx="8"
+        class="yellow outline"/>
+  <rect x="265" y="420" width="16" height="40" rx="8"
+        class="yellow outline"/>
+</svg>

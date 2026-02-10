@@ -1,0 +1,55 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .outline { stroke:#1a1a1a; stroke-width:6; stroke-linecap:round; stroke-linejoin:round; }
+      .brown { fill:#9c6235; }
+      .tan { fill:#f6ead1; }
+      .dark { fill:#6b3f1d; }
+      .yellow { fill:#f7c948; }
+      .black { fill:#1a1a1a; }
+      .white { fill:#ffffff; }
+    </style>
+  </defs>
+
+  <!-- Body -->
+  <ellipse cx="256" cy="300" rx="130" ry="150" class="brown outline hawk-body"/>
+
+  <!-- Belly -->
+  <ellipse cx="256" cy="330" rx="90" ry="110" class="tan outline hawk-belly"/>
+
+  <!-- Wings -->
+  <ellipse cx="160" cy="310" rx="45" ry="80" class="dark outline hawk-wing-left"/>
+  <ellipse cx="352" cy="310" rx="45" ry="80" class="dark outline hawk-wing-right"/>
+
+  <!-- Head -->
+  <circle cx="256" cy="160" r="100" class="brown outline"/>
+
+  <!-- Face -->
+  <circle cx="256" cy="175" r="75" class="tan outline"/>
+
+  <!-- Eyes -->
+  <circle cx="225" cy="160" r="22" class="black"/>
+  <circle cx="287" cy="160" r="22" class="black"/>
+
+  <!-- Eye highlights -->
+  <circle cx="232" cy="152" r="7" class="white hawk-eye-highlight-left"/>
+  <circle cx="294" cy="152" r="7" class="white hawk-eye-highlight-right"/>
+
+  <!-- Beak -->
+  <path d="M256 185
+           c20 0 30 15 0 30
+           c-30 -15 -20 -30 0 -30z"
+        class="yellow outline"/>
+
+  <!-- Blush -->
+  <ellipse cx="200" cy="195" rx="12" ry="8" fill="#f2b6b6" opacity="0.7"/>
+  <ellipse cx="312" cy="195" rx="12" ry="8" fill="#f2b6b6" opacity="0.7"/>
+
+  <!-- Legs -->
+  <rect x="225" y="420" width="16" height="45" rx="8" class="yellow outline hawk-leg-left"/>
+  <rect x="271" y="420" width="16" height="45" rx="8" class="yellow outline hawk-leg-right"/>
+
+  <!-- Feet -->
+  <ellipse cx="233" cy="470" rx="22" ry="10" class="yellow outline hawk-foot-left"/>
+  <ellipse cx="279" cy="470" rx="22" ry="10" class="yellow outline hawk-foot-right"/>
+</svg>
