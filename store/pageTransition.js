@@ -10,11 +10,7 @@ export const usePageTransitionStore = defineStore('pageTransitionStore', () => {
 	const setTransitionElements = (state) => {
 		transitionElements.value = state
 	}
-
-	watch(isAnimating, () => {
-		console.log('isAnimating', isAnimating.value)
-	})
-
+	
 	return {
 		transitionElements,
 		setTransitionElements,
