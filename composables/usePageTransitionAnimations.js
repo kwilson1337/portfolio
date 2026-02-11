@@ -1,22 +1,31 @@
 import { gsap } from 'gsap'
+import { usePageTransitionStore } from '@/store/pageTransition'
 
 export const usePageTransitionAnimations = () => {
-	const activeScrimState = (refs = []) => {
-		const [first, second] = refs
-		const firstTimeline = gsap.timeline({ delay: .3 })
-		const secondTimeline = gsap.timeline({ delay: .8 })
+	const { setIsAnimating } = usePageTransitionStore()
 
-		firstTimeline.to(first, {
+	const activeScrimState = (refs = [], onComplete) => {
+		const [first, second] = refs
+		const firstTimeline = gsap.timeline({ delay: .3, onComplete })
+		const secondTimeline = gsap.timeline({ delay: .8, onComplete })
+
+		firstTimeline.fromTo(first, {
+			width: '0%',
+			right: 0,			
+		}, {
 			width: '100%',
 			right: 0,
 			ease: 'power1.in',
-			visibility: 'visible'
+			visibility: 'visible',		
 		})
-		secondTimeline.to(second, {
+		secondTimeline.fromTo(second, {
+			width: '0%',
+			right: '0'
+		}, {
 			width: '100%',
 			right: 0,
 			ease: 'power1.in',
-			visibility: 'visible'
+			visibility: 'visible',			
 		})
 
 		return {
@@ -25,24 +34,43 @@ export const usePageTransitionAnimations = () => {
 		}
 	}
 
-	const resetScrimState = (refs = []) => {
+	const resetScrimState = (refs = [], onComplete) => {
 		const [first, second] = refs
-		const firstTimeline = gsap.timeline({ delay: 1 })
-		const secondTimeline = gsap.timeline({ delay: .5 })
+		const firstTimeline = gsap.timeline({ delay: .5, onComplete })
+		const secondTimeline = gsap.timeline({ 
+			delay: .1,
+			onComplete, 
+			onStart: () => setIsAnimating(true)
+		})
 
-		firstTimeline.to(first, {
+		firstTimeline.fromTo(first, {
+			width: '100%',
+			right: 0,			
+			visibility: 'visible',					
+		}, {
 			width: '0%',
 			right: 0,
-			ease: 'power1.out',            
+			ease: 'power1.out',			    
 		})
 		firstTimeline.to(first, { visibility: 'hidden' })
 
-		secondTimeline.to(second, {
+		secondTimeline.fromTo(second, {
+			width: '100%',
+			right: 0,
+			ease: 'power1.out',
+			visibility: 'visible',
+		}, {
 			width: '0%',
 			right: 0,
-			ease: 'power1.out',            
-		})
-		secondTimeline.to(second, { visibility: 'hidden' })   
+			ease: 'power1.out', 			       
+		})	
+		secondTimeline.to(second, 
+			{ 
+				visibility: 'hidden',
+				onComplete: () => {
+					setIsAnimating(false)
+				}
+			})   
         
 		return {
 			firstTimeline, 

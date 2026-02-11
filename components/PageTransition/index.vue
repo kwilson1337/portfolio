@@ -10,6 +10,7 @@ import { useMobileMenu } from '@/store/mobileMenu';
 import { usePageTransitionAnimations } from '@/composables/usePageTransitionAnimations'
 import { useMenuAnimations } from '@/composables/useMenuAnimations'
 import { storeToRefs } from 'pinia';
+import { usePageTransitionStore } from '@/store/pageTransition'
 
 const firstScrim = ref(null)
 const secondScrim = ref(null)
@@ -17,6 +18,11 @@ const secondScrim = ref(null)
 const { isActive, menuLinkRefs } = storeToRefs(useMobileMenu())
 const { activeScrimState, resetScrimState } = usePageTransitionAnimations()
 const { fadeLinksIn, fadeLinksOut } = useMenuAnimations()
+
+const { setTransitionElements } = usePageTransitionStore()
+watch(() => [firstScrim.value, secondScrim.value], (newVal) => {    
+	setTransitionElements(newVal)
+}, { immediate: true })
 
 watch(isActive, () => {       
 	if(isActive.value) {        

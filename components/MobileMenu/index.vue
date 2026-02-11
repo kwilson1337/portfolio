@@ -1,6 +1,10 @@
 <template>
-    <div class="mobile-menu">
-        <div class="mobile-menu__inner" @click="toggleMenu">
+    <div class="mobile-menu">        
+        <div         
+            :class="{'--disabled': isAnimating}"
+            class="mobile-menu__inner" 
+            @click="toggleMenu"
+        >            
             <div ref="barTop" class="mobile-menu__bar" />
             <div ref="barBottom" class="mobile-menu__bar" />
         </div>        
@@ -8,22 +12,11 @@
 
     <div 
         ref="menuContainer"
-        class="mobile-menu-menu"
-        :class="{'--active' : mobileMenuStore.isActive}"
+        class="mobile-menu-menu"        
     >        
         <div class="mobile-menu-menu__inner">
             <div class="mobile-menu-menu__links">
-                <ul>                    
-                    <li 
-                        v-for="link in siteLinks"
-                        :key="link.title"
-                        ref="menuLinks"
-                        class="h1"
-                        @click="routeToLink(link.url)"
-                    >
-                        {{ link.title }}                     
-                    </li>              
-                </ul>
+                <MenuLinks @menu-links:click="routeToLink" />               
             </div>
         </div>
     </div>
@@ -32,7 +25,9 @@
 <script setup>
 import { useMenuAnimations } from '@/composables/useMenuAnimations'
 import { useMobileMenu } from '@/store/mobileMenu'
-import { siteLinks } from '@/constants'
+import MenuLinks from './MenuLinks.vue'
+import { usePageTransitionStore } from '@/store/pageTransition'
+import { storeToRefs } from 'pinia'
 
 const { 
 	menuToggleActiveState, 
@@ -41,7 +36,6 @@ const {
 
 const barTop = ref(null)
 const barBottom = ref(null)
-const menuLinks = ref(null)
 const menuContainer = ref(null)
 
 const resetMenu = () => {
@@ -52,9 +46,14 @@ const resetMenu = () => {
 	])	
 }
 
-const mobileMenuStore = useMobileMenu()
-const toggleMenu = () => {    
-	if(!mobileMenuStore.isActive) {
+const { isAnimating } = storeToRefs(usePageTransitionStore())
+const { isActive } = storeToRefs(useMobileMenu())
+const toggleMenu = () => { 
+	if(isAnimating.value) {
+		return
+	}
+    
+	if(!isActive.value) {
 		menuToggleActiveState([
 			barTop.value, 
 			barBottom.value,						
@@ -64,10 +63,6 @@ const toggleMenu = () => {
 		resetMenu()
 	}
 }
-
-watch(menuLinks, () => {
-	mobileMenuStore.setMenuLinkRefs(menuLinks.value)
-})
 
 const router = useRouter()
 const routeToLink = (url) => {
@@ -90,6 +85,10 @@ const routeToLink = (url) => {
         width: 3.5rem;
         height: 3.5rem;    
         cursor: pointer;
+
+        &.--disabled {
+            cursor: unset;
+        }
     }
 
     &__bar {
@@ -112,24 +111,6 @@ const routeToLink = (url) => {
     justify-content: center;
     z-index: 2;
     opacity: 0;
-    visibility: hidden;       
-
-    &__links {     
-        color: $color1;  
-
-         ul {
-            padding-left: 0px;
-            list-style-type: none;
-            text-align: center;
-
-            li {
-                cursor: pointer;
-
-                & + li {
-                    margin-top: 10px;
-                }
-            }
-        }
-    }
+    visibility: hidden;           
 }
 </style>

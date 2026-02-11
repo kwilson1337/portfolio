@@ -2,6 +2,13 @@
 import { fileURLToPath } from 'node:url'
 
 export default defineNuxtConfig({
+	app: {
+		pageTransition: { 
+			name: 'page',
+			mode: 'out-in',
+			css: false 		
+		},
+	},
 	modules: ['nuxt-svgo', '@nuxt/eslint', '@nuxtjs/google-fonts', '@pinia/nuxt'],
 	devtools: { enabled: true },
 	alias: {
