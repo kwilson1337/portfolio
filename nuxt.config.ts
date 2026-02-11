@@ -2,7 +2,7 @@
 import { fileURLToPath } from 'node:url'
 
 export default defineNuxtConfig({
-	modules: ['nuxt-svgo', '@nuxt/eslint', '@nuxtjs/google-fonts'],
+	modules: ['nuxt-svgo', '@nuxt/eslint', '@nuxtjs/google-fonts', '@pinia/nuxt'],
 	devtools: { enabled: true },
 	alias: {
 		'@assets': fileURLToPath(new URL('./assets', import.meta.url)),
@@ -41,5 +41,5 @@ export default defineNuxtConfig({
 		families: {
 			Poppins: [400, 500, 700]
 		}
-  	}
+	}
 })

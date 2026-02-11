@@ -3,66 +3,83 @@
         <div class="mobile-menu__inner" @click="toggleMenu">
             <div ref="barTop" class="mobile-menu__bar" />
             <div ref="barBottom" class="mobile-menu__bar" />
-        </div>
-    </div>
+        </div>        
+    </div>    
 
-    <div class="mobile-menu-scrim">
-        <div ref="firstScrim" class="mobile-menu-scrim__block --first"/>
-        <div ref="secondScrim" class="mobile-menu-scrim__block --second">           
-            <ul>
-                <li 
-                    v-for="link in siteLinks"
-                    :key="link.title"
-                    class="h1"
-                    ref="menuLinks"
-                >
-                    {{ link.title }}
-                </li>              
-            </ul>
+    <div 
+        ref="menuContainer"
+        class="mobile-menu-menu"
+        :class="{'--active' : mobileMenuStore.isActive}"
+    >        
+        <div class="mobile-menu-menu__inner">
+            <div class="mobile-menu-menu__links">
+                <ul>                    
+                    <li 
+                        v-for="link in siteLinks"
+                        :key="link.title"
+                        ref="menuLinks"
+                        class="h1"
+                        @click="routeToLink(link.url)"
+                    >
+                        {{ link.title }}                     
+                    </li>              
+                </ul>
+            </div>
         </div>
     </div>
 </template>
 
 <script setup>
 import { useMenuAnimations } from '@/composables/useMenuAnimations'
-import { siteLinks } from '@/constants/index'
+import { useMobileMenu } from '@/store/mobileMenu'
+import { siteLinks } from '@/constants'
 
 const { 
 	menuToggleActiveState, 
-	resetMenuToggle,
-	isActive 
+	resetMenuToggle,	
 } = useMenuAnimations()
 
 const barTop = ref(null)
 const barBottom = ref(null)
-const firstScrim = ref(null)
-const secondScrim = ref(null)
 const menuLinks = ref(null)
+const menuContainer = ref(null)
 
-const toggleMenu = () => {
-	if(!isActive.value) {
+const resetMenu = () => {
+	resetMenuToggle([
+		barTop.value,
+		barBottom.value,			
+		menuContainer.value
+	])	
+}
+
+const mobileMenuStore = useMobileMenu()
+const toggleMenu = () => {    
+	if(!mobileMenuStore.isActive) {
 		menuToggleActiveState([
-            barTop.value, 
-            barBottom.value,
-            firstScrim.value, 
-            secondScrim.value,
-            menuLinks.value
-        ])		
+			barTop.value, 
+			barBottom.value,						
+			menuContainer.value
+		])		
 	} else {
-		resetMenuToggle([
-            barTop.value,
-            barBottom.value,             
-            firstScrim.value, 
-            secondScrim.value,
-            menuLinks.value
-        ])		
+		resetMenu()
 	}
+}
+
+watch(menuLinks, () => {
+	mobileMenuStore.setMenuLinkRefs(menuLinks.value)
+})
+
+const router = useRouter()
+const routeToLink = (url) => {
+	resetMenu()
+	router.push(url)    
 }
 </script>
 
 <style scoped lang="scss">
-.mobile-menu {      
-    z-index: 2; 
+.mobile-menu {    
+    position: relative;  
+    z-index: 3; 
 
     &__inner {
         display: flex;
@@ -83,30 +100,32 @@ const toggleMenu = () => {
     }
 }
 
-.mobile-menu-scrim {
-    z-index: 1;    
+.mobile-menu-menu {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: 0px;
+    top: 0px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;       
 
-    &__block {
-        position: absolute;
-        top: 0px;
-        width: 100%;
-        background-color: #eeeeee;
-        height: 100%;        
-        right: -100%;
+    &__links {     
+        color: $color1;  
 
-        &.--second {
-            background-color: $color2;
-            color: $color1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+         ul {
+            padding-left: 0px;
+            list-style-type: none;
+            text-align: center;
 
-            ul {
-                padding-left: 0px;
-                list-style-type: none;
-                text-align: center;
+            li {
+                cursor: pointer;
 
-                li + li {
+                & + li {
                     margin-top: 10px;
                 }
             }

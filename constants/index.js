@@ -1,14 +1,14 @@
 export const siteLinks = [
-    {
-        title: 'Home',
-        url: '/'
-    },
-    {
-        title: 'About',
-        url: '/about'
-    },
-    {
-        title: 'Contact',
-        url: '/contact'
-    }
+	{
+		title: 'Home',
+		url: '/'
+	},
+	{
+		title: 'About',
+		url: '/about'
+	},
+	{
+		title: 'Contact',
+		url: '/contact'
+	}
 ]

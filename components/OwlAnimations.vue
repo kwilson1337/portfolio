@@ -10,7 +10,6 @@
 
 <script setup>
 import Bird from '@assets/svg/hawk-profile.svg'
-import Morph from '@assets/svg/combine.svg'
 import { useHawkAnimations } from '@/composables/useHawkAnimations'
 
 const { flapWings, hawkToK } = useHawkAnimations()

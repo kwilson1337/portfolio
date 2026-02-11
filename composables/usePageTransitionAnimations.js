@@ -1,7 +1,7 @@
 import { gsap } from 'gsap'
 
 export const usePageTransitionAnimations = () => {
-    const activeScrimState = (refs = []) => {
+	const activeScrimState = (refs = []) => {
 		const [first, second] = refs
 		const firstTimeline = gsap.timeline({ delay: .3 })
 		const secondTimeline = gsap.timeline({ delay: .8 })
@@ -19,10 +19,10 @@ export const usePageTransitionAnimations = () => {
 			visibility: 'visible'
 		})
 
-        return {
-            firstTimeline, 
-            secondTimeline
-        }
+		return {
+			firstTimeline, 
+			secondTimeline
+		}
 	}
 
 	const resetScrimState = (refs = []) => {
@@ -44,14 +44,14 @@ export const usePageTransitionAnimations = () => {
 		})
 		secondTimeline.to(second, { visibility: 'hidden' })   
         
-        return {
-            firstTimeline, 
-            secondTimeline
-        }
+		return {
+			firstTimeline, 
+			secondTimeline
+		}
 	}
 
-    return {
-        activeScrimState,
-        resetScrimState
-    }
+	return {
+		activeScrimState,
+		resetScrimState
+	}
 }
