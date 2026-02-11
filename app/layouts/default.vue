@@ -5,6 +5,9 @@
         </nav>       
     </header>    
      <main>
+        <NuxtLink to="/">Home</NuxtLink>
+      <NuxtLink class="mx-4" to="/about">About</NuxtLink>
+      <NuxtLink to="/contact">Contact</NuxtLink>
         <slot />
 
         <PageTransition />

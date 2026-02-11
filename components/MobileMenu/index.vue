@@ -1,6 +1,10 @@
 <template>
-    <div class="mobile-menu">
-        <div class="mobile-menu__inner" @click="toggleMenu">
+    <div class="mobile-menu">        
+        <div         
+            :class="{'--disabled': isAnimating}"
+            class="mobile-menu__inner" 
+            @click="toggleMenu"
+        >            
             <div ref="barTop" class="mobile-menu__bar" />
             <div ref="barBottom" class="mobile-menu__bar" />
         </div>        
@@ -22,6 +26,7 @@
 import { useMenuAnimations } from '@/composables/useMenuAnimations'
 import { useMobileMenu } from '@/store/mobileMenu'
 import MenuLinks from './MenuLinks.vue'
+import { usePageTransitionStore } from '@/store/pageTransition'
 import { storeToRefs } from 'pinia'
 
 const { 
@@ -41,8 +46,13 @@ const resetMenu = () => {
 	])	
 }
 
+const { isAnimating } = storeToRefs(usePageTransitionStore())
 const { isActive } = storeToRefs(useMobileMenu())
-const toggleMenu = () => {    
+const toggleMenu = () => { 
+	if(isAnimating.value) {
+		return
+	}
+    
 	if(!isActive.value) {
 		menuToggleActiveState([
 			barTop.value, 
@@ -75,6 +85,10 @@ const routeToLink = (url) => {
         width: 3.5rem;
         height: 3.5rem;    
         cursor: pointer;
+
+        &.--disabled {
+            cursor: unset;
+        }
     }
 
     &__bar {
