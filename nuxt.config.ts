@@ -9,13 +9,19 @@ export default defineNuxtConfig({
 			css: false 		
 		},
 	},
-	modules: ['nuxt-svgo', '@nuxt/eslint', '@nuxtjs/google-fonts', '@pinia/nuxt'],
-	devtools: { enabled: true },
+	modules: [
+				 'nuxt-svgo',
+				 '@nuxt/eslint',
+				 '@nuxtjs/google-fonts',
+				 '@pinia/nuxt',
+				 '@nuxt/image'
+	],
+	devtools: { enabled: true },	
 	alias: {
 		'@assets': fileURLToPath(new URL('./assets', import.meta.url)),
 		'@': fileURLToPath(new URL('./', import.meta.url)),
 	},
-	compatibilityDate: '2025-07-15',
+	compatibilityDate: '2025-07-15',	
 	css: [
 		'@assets/styles/default.scss'		
 	],
