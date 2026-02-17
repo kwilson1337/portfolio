@@ -1,21 +1,30 @@
 <template>
     <div class="container">
-        <div class="container__inner">
-            <slot />
-        </div>
+        <slot />                
     </div>    
 </template>
 
 <style lang="scss" scope>
 .container {
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+    padding: 0px 15px;    
+    margin: 0 auto;    
+    max-width: 1320px;
 
-    &__inner {
-        max-width: 1400px;
-    }
+    @media (max-width: 1200px) {
+        max-width: 1140px;
+    } 
+    
+    @media (max-width: 992px) {
+        max-width: 960px;
+    }  
+
+    @media (max-width: 768px) {
+        max-width: 1140px;
+    } 
+    
+    @media (max-width: 576px) {
+        max-width: 540px;
+    } 
 }
 </style>

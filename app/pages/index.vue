@@ -1,6 +1,6 @@
 <template>   
    <div>
-      <h1>Home</h1>      
+      <h1 style="height: 100vh">Home</h1>      
       <WorkHistory />
    </div>       
 </template>
