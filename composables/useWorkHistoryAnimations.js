@@ -10,33 +10,43 @@ export const useWorkHistoryAnimations = () => {
 			...refs
 		}
 	}
-	
-	const setScrollTrgger = () => {    
-		const { mainContainer, companyLogo } = workHistoryRefs.value    
 
-		if(mainContainer && companyLogo) {                
-			gsap.fromTo(mainContainer, {                     
-				background: 'transparent',
-				duration: '.1',
-				padding: '0px'                
-			},
-			{
+	const animateTitleInOnScroll = () => {
+		const { workHistoryTitle } = workHistoryRefs.value		
+		if(workHistoryTitle) {		
+			const tl = gsap.timeline({
 				scrollTrigger: {
-					trigger: mainContainer,
+					trigger: workHistoryTitle,
 					toggleActions: 'restart none none none',
-					scrub: 2,
-					start: 'top 200',
-					end: '+=200' 
-				},   
-				background: 'linear-gradient(to top, #00aeef 90%, #b226ae 95%)',
-				padding: '100px 60px'
-			}            
-			)        
-		}    
+					scrub: .5,												
+					markers: true,																			
+				},
+			})				
+			tl.fromTo(workHistoryTitle, {
+				rotateX: '90deg'
+			},
+			{					
+				rotateX: '0'
+			}
+			)
+		}		
+	}
+
+	const animateHistory = () => {
+		const { history } = workHistoryRefs.value
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: history,				
+				scrub: .5,												
+				markers: true,																			
+			},			
+		})
+		tl.to(history, { background: 'pink' })
 	}
 
 	return {
-		setWorkHistoryRefs,
-		setScrollTrgger
+		setWorkHistoryRefs,	
+		animateTitleInOnScroll,
+		animateHistory
 	}
 }

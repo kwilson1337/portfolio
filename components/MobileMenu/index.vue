@@ -100,7 +100,7 @@ const routeToLink = (url) => {
 }
 
 .mobile-menu-menu {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     right: 0px;

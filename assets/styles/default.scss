@@ -1,7 +1,15 @@
-@import './typography';
+@import     
+    './typography',
+    './mixins';
 
 body {
     background-color: $color2;
     margin: 0px;    
     font-family: $font1;
+    color: $color1;    
+}
+
+a {
+    color: $color1;
+    text-decoration: underline;
 }

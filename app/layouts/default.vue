@@ -23,10 +23,17 @@ import PageTransition from '@/components/PageTransition'
 main {
     color: $color1;
 }
+
+header {
+    position: sticky;
+    top: 0px;
+    z-index: 2;
+}
+
 header nav {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 15px;    
+    padding: 15px;       
 }
 </style>

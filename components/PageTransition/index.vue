@@ -37,15 +37,16 @@ watch(isActive, () => {
 
 <style lang="scss" scoped>
 .page-transition {
-    z-index: 1;    
+    z-index: 1;       
+    visibility: hidden;        
 
     &__block {
-        position: absolute;
+        position: fixed;
         top: 0px;
         width: 100%;
         background-color: $color1;
         height: 100%;        
-        right: -100%;
+        right: 0;
 
         &.--second {
             background-color: $color2;        
