@@ -1,13 +1,8 @@
 <template>
     <header>
-        <nav>
-            <MobileMenu />                
-        </nav>       
+        <MobileMenu />     
     </header>    
-     <main>
-        <NuxtLink to="/">Home</NuxtLink>
-      <NuxtLink class="mx-4" to="/about">About</NuxtLink>
-      <NuxtLink to="/contact">Contact</NuxtLink>
+     <main>    
         <slot />
 
         <PageTransition />
@@ -30,10 +25,10 @@ header {
     z-index: 2;
 }
 
-header nav {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 15px;       
-}
+// header nav {
+//     display: flex;
+//     justify-content: flex-end;
+//     align-items: center;
+//     padding: 15px;       
+// }
 </style>

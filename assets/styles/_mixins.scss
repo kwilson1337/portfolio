@@ -2,3 +2,9 @@ $browser-context: 16;
 @function rem($pixels, $context: $browser-context) {
   @return #{$pixels/$context}rem;
 }
+
+@mixin rfs($min-size, $max-size, $min-viewport: 560px, $max-viewport: 1440px) { 
+  $preferred-value: calc(rem($min-size) + (rem($max-size) - rem($min-size)) * ((100vw - $min-viewport) / ($max-viewport - $min-viewport)));
+  
+  font-size: clamp(rem($min-size), $preferred-value, rem($max-size));
+}

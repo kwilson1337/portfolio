@@ -5,8 +5,7 @@
 </template>
 
 <style lang="scss" scope>
-.container {
-    width: 100%;
+.container {    
     padding: 0px 15px;    
     margin: 0 auto;    
     max-width: 1320px;

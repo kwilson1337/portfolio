@@ -26,21 +26,22 @@ watch(workHistoryTitle, () => {
 
 <style lang="scss" scoped>
 .work-history-intro {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &__title {
-        position: relative;        
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        position: relative;                       
 
-        h1 {
-            font-size: rem(180);                   
+        h1 {                            
+            @include rfs(60, 180);
             text-align: center;
             transform-style: preserve-3d;   
             margin: 0px;    
             position: relative;                          
         }
-    }
+    } 
 }
 </style>

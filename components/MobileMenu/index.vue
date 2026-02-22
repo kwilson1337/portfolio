@@ -1,13 +1,21 @@
 <template>
-    <div class="mobile-menu">        
-        <div         
-            :class="{'--disabled': isAnimating}"
-            class="mobile-menu__inner" 
-            @click="toggleMenu"
-        >            
-            <div ref="barTop" class="mobile-menu__bar" />
-            <div ref="barBottom" class="mobile-menu__bar" />
-        </div>        
+    <div class="mobile-menu">       
+        <Container>
+            <div class="mobile-menu__inner">
+                <div class="mobile-menu__logo">
+                    <Logo />
+                </div>
+
+                <div         
+                    :class="{'--disabled': isAnimating}"
+                    class="mobile-menu__menu-container" 
+                    @click="toggleMenu"
+                >            
+                    <div ref="barTop" class="mobile-menu__bar" />
+                    <div ref="barBottom" class="mobile-menu__bar" />
+                </div>     
+            </div>   
+        </Container>                 
     </div>    
 
     <div 
@@ -16,7 +24,7 @@
     >        
         <div class="mobile-menu-menu__inner">
             <div class="mobile-menu-menu__links">
-                <MenuLinks @menu-links:click="routeToLink" />               
+                <MenuLinks @menu-links:click="resetMenu" />               
             </div>
         </div>
     </div>
@@ -28,6 +36,8 @@ import { useMobileMenu } from '@/store/mobileMenu'
 import MenuLinks from './MenuLinks.vue'
 import { usePageTransitionStore } from '@/store/pageTransition'
 import { storeToRefs } from 'pinia'
+import Container from '@/components/Container'
+import Logo from '@/components/Logo/index.vue'
 
 const { 
 	menuToggleActiveState, 
@@ -63,20 +73,22 @@ const toggleMenu = () => {
 		resetMenu()
 	}
 }
-
-const router = useRouter()
-const routeToLink = (url) => {
-	resetMenu()
-	router.push(url)    
-}
 </script>
 
 <style scoped lang="scss">
 .mobile-menu {    
     position: relative;  
-    z-index: 3; 
-
+    z-index: 3;     
+    
     &__inner {
+        padding: rem(5) 0px;
+        padding-left: rem(15);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__menu-container {
         display: flex;
         justify-content: center;
         align-items: center;

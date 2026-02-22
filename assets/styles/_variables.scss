@@ -4,8 +4,23 @@ $black: #333;
 $color1: #eeeeee;
 $color2: #020420;
 
+$nurocorColors: (
+    historyDateGradStart: linear-gradient(to bottom, #009587 0%, #012a2e 40%),
+    historyDateGradEnd: linear-gradient(to bottom, $color2 65%, #012a2e 90%),
+    backgroundGrad: linear-gradient(to right, #009587 0%, #012a2e 40%),
+    
+);
+
+$stovaColors: (
+    backgroundGrad: linear-gradient(#f63 0,#59110a 100%),
+    historyDateGradStart: linear-gradient(to bottom, #f63 0%, #59110a 40%),
+    historyDateGradEnd: linear-gradient(to bottom, $color2 65%, #59110a 90%),
+);
+
 $brandCoders: (
-    grad: linear-gradient(to right, #00aeef 0%, #b226ae 40%)
+    backgroundGrad: linear-gradient(to right, #00aeef 0%, #b226ae 40%),
+    historyDateGradStart: linear-gradient(to bottom, #00aeef 0%, #b226ae 40%),
+    historyDateGradEnd: linear-gradient(to bottom, $color2 65%, #b226ae 90%),
 );
 
 $font1: "Poppins", sans-serif;

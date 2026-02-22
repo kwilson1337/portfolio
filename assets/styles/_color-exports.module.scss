@@ -1,0 +1,15 @@
+@import './variables';
+
+:export {
+  colorOne: $color1;
+  colorTwo: $color2;
+  @each $brand, $map in (
+    "nurocor": $nurocorColors, 
+    "stova": $stovaColors, 
+    "brandCoders": $brandCoders
+  ) {    
+    @each $key, $value in $map {
+      #{$brand}_#{$key}: $value;
+    }
+  }
+}
