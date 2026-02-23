@@ -3,7 +3,7 @@
     <div class="owl-animations__inner">
       <div class="owl-animations__single">
         <Bird />
-      </div>     
+      </div>
     </div>
   </div>
 </template>
@@ -25,6 +25,6 @@ onMounted(() => {
     &__inner {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-    }  
+    }
 }
 </style>

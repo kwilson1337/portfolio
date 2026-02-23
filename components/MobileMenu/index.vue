@@ -1,30 +1,30 @@
 <template>
-    <div class="mobile-menu">       
+    <div class="mobile-menu">
         <Container>
             <div class="mobile-menu__inner">
                 <div class="mobile-menu__logo">
                     <Logo />
                 </div>
 
-                <div         
+                <div
                     :class="{'--disabled': isAnimating}"
-                    class="mobile-menu__menu-container" 
+                    class="mobile-menu__menu-container"
                     @click="toggleMenu"
-                >            
+                >
                     <div ref="barTop" class="mobile-menu__bar" />
                     <div ref="barBottom" class="mobile-menu__bar" />
-                </div>     
-            </div>   
-        </Container>                 
-    </div>    
+                </div>
+            </div>
+        </Container>
+    </div>
 
-    <div 
+    <div
         ref="menuContainer"
-        class="mobile-menu-menu"        
-    >        
+        class="mobile-menu-menu"
+    >
         <div class="mobile-menu-menu__inner">
             <div class="mobile-menu-menu__links">
-                <MenuLinks @menu-links:click="resetMenu" />               
+                <MenuLinks @menu-links:click="resetMenu" />
             </div>
         </div>
     </div>
@@ -39,9 +39,9 @@ import { storeToRefs } from 'pinia'
 import Container from '@/components/Container'
 import Logo from '@/components/Logo/index.vue'
 
-const { 
-	menuToggleActiveState, 
-	resetMenuToggle,	
+const {
+	menuToggleActiveState,
+	resetMenuToggle,
 } = useMenuAnimations()
 
 const barTop = ref(null)
@@ -51,24 +51,24 @@ const menuContainer = ref(null)
 const resetMenu = () => {
 	resetMenuToggle([
 		barTop.value,
-		barBottom.value,			
+		barBottom.value,
 		menuContainer.value
-	])	
+	])
 }
 
 const { isAnimating } = storeToRefs(usePageTransitionStore())
 const { isActive } = storeToRefs(useMobileMenu())
-const toggleMenu = () => { 
+const toggleMenu = () => {
 	if(isAnimating.value) {
 		return
 	}
-    
+
 	if(!isActive.value) {
 		menuToggleActiveState([
-			barTop.value, 
-			barBottom.value,						
+			barTop.value,
+			barBottom.value,
 			menuContainer.value
-		])		
+		])
 	} else {
 		resetMenu()
 	}
@@ -76,10 +76,10 @@ const toggleMenu = () => {
 </script>
 
 <style scoped lang="scss">
-.mobile-menu {    
-    position: relative;  
-    z-index: 3;     
-    
+.mobile-menu {
+    position: relative;
+    z-index: 3;
+
     &__inner {
         padding: rem(5) 0px;
         padding-left: rem(15);
@@ -93,9 +93,9 @@ const toggleMenu = () => {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        gap: 16px;        
+        gap: 16px;
         width: 3.5rem;
-        height: 3.5rem;    
+        height: 3.5rem;
         cursor: pointer;
 
         &.--disabled {
@@ -123,6 +123,6 @@ const toggleMenu = () => {
     justify-content: center;
     z-index: 2;
     opacity: 0;
-    visibility: hidden;           
+    visibility: hidden;
 }
 </style>

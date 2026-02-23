@@ -7,7 +7,7 @@
 			<div class="history__timeline"/>
 
             <h1>{{ historyData.name }}</h1>
-        </Container>        
+        </Container>
     </div>
 </template>
 
@@ -22,8 +22,8 @@ const props = defineProps({
 		default: () => ({})
 	}
 })
-const { 
-	setWorkHistoryRefs,     
+const {
+	setWorkHistoryRefs,
 	animateHistory,
 	cleanUpAllAnimations
 } = useWorkHistoryAnimations()
@@ -31,13 +31,13 @@ const {
 const historyContainer = ref(null)
 const workHistoryDate = ref(null)
 watch(historyContainer, () => {
-	setWorkHistoryRefs({		
+	setWorkHistoryRefs({
 		historyContainer: historyContainer.value,
 		workHistoryDate: workHistoryDate.value
 	})
 
 	animateHistory({
-		containerBackgroundColor: props.historyData.containerBackground,		
+		containerBackgroundColor: props.historyData.containerBackground,
 		dateBackgroundColorStart: props.historyData.historyDateBackgroundStart,
 		dateBackgroundColorEnd: props.historyData.historyDateBackgroundEnd
 	})
@@ -48,7 +48,7 @@ onUnmounted(cleanUpAllAnimations)
 
 <style lang="scss" scoped>
 .history {
-    height: 200vh;   
+    height: 200vh;
 	position: relative;
 	padding: rem(45) 0px;
 
@@ -67,26 +67,26 @@ onUnmounted(cleanUpAllAnimations)
         position: absolute;
         top: -20px;
         text-align: center;
-        display: flex;        
+        display: flex;
         align-items: center;
-        justify-content: center;  
-		left: 50%;   
+        justify-content: center;
+		left: 50%;
 		right: 50%;
 		transform: translate(-50%, -50%);
-		        
+
         h3 {
-            @include rfs(36, 48);			
+            @include rfs(36, 48);
         }
 	}
 
 	&__timeline {
 		width: 5px;
 		background-color: $color1;
-		position: absolute;		
+		position: absolute;
 		left: 50%;
 		transform: translateX(-50%);
 		height: calc(100% - 230px);
-		top: 105px;	
+		top: 105px;
 	}
 }
 </style>

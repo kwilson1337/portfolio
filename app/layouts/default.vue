@@ -1,8 +1,8 @@
 <template>
     <header>
-        <MobileMenu />     
-    </header>    
-     <main>    
+        <MobileMenu />
+    </header>
+     <main>
         <slot />
 
         <PageTransition />
@@ -29,6 +29,6 @@ header {
 //     display: flex;
 //     justify-content: flex-end;
 //     align-items: center;
-//     padding: 15px;       
+//     padding: 15px;
 // }
 </style>

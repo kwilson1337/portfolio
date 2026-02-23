@@ -2,8 +2,8 @@
     <div class="menu-links">
         <div class="menu-links__links">
             <nav>
-                <ul>                
-                    <li 
+                <ul>
+                    <li
                         v-for="link in siteLinks"
                         :key="link.title"
                         ref="menuLinks"
@@ -12,10 +12,10 @@
                     >
                         <NuxtLink :to="link.url">
                             {{ link.title }}
-                        </NuxtLink>                                           
-                    </li>  
+                        </NuxtLink>
+                    </li>
                 </ul>
-            </nav>            
+            </nav>
         </div>
     </div>
 </template>
@@ -35,8 +35,8 @@ watch(menuLinks, () => {
 
 <style lang="scss" scoped>
 .menu-links {
-    &__links {     
-        color: $color1;  
+    &__links {
+        color: $color1;
 
          ul {
             padding-left: 0px;

@@ -1,15 +1,39 @@
 <template>
     <div class="header-logo">
-        <div class="header-logo__inner">
+        <div class="header-logo__inner" @mouseenter="onEnter">
             <h2>
                 <NuxtLink to="/">
                     <span>K</span>
                     <span>W</span>
-                </NuxtLink>                
+
+                    <div class="header-logo__transition --first"/>
+                    <div class="header-logo__transition --second"/>
+                </NuxtLink>
             </h2>
         </div>
     </div>
 </template>
+
+<script setup>
+import { gsap } from 'gsap'
+
+const onEnter = () => {
+	const firstTl = gsap.timeline({ delay: .3 })
+	const secondTl = gsap.timeline({ delay: .8 })
+
+	gsap.set('.header-logo__transition.--first', { scaleX: 0, transformOrigin: 'left', width: '100%' })
+	firstTl
+		.to('.header-logo__transition.--first', { scaleX: 1, duration: 0.2, delay: 0 })
+		.set('.header-logo__transition.--first', { transformOrigin: 'right' })
+		.to('.header-logo__transition.--first', { scaleX: 0, duration: 0.2, delay: 0.3 })
+
+	gsap.set('.header-logo__transition.--second', { scaleX: 0, transformOrigin: 'left', width: '100%' })
+	secondTl
+		.to('.header-logo__transition.--second', { scaleX: 1, duration: 0.2, delay: 0 })
+		.set('.header-logo__transition.--second', { transformOrigin: 'right' })
+		.to('.header-logo__transition.--second', { scaleX: 0, duration: 0.2, delay: 0.3 })
+}
+</script>
 
 <style lang="scss" scoped>
 @mixin dotStyles {
@@ -23,8 +47,8 @@
 }
 
 .header-logo {
-    position: relative;    
-        
+    position: relative;
+
     h2 {
         font-size: rem(32);
         margin: 0px;
@@ -45,19 +69,31 @@
         }
 
         & + span {
-            margin-left: rem(20);   
-            
+            margin-left: rem(20);
+
             &::before {
                 content: '';
                 @include dotStyles;
                 left: -15px;
             }
-            
+
             &::after {
                 content: '';
                 @include dotStyles;
                 right: -15px;
             }
+        }
+    }
+
+    &__transition {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background-color: $color1;
+        height: 100%;
+
+        &.--second {
+            background-color: $color2;
         }
     }
 }

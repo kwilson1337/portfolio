@@ -1,9 +1,9 @@
-<template>   
+<template>
    <div>
       <!-- <h1 style="height: 500px">Home</h1>       -->
        <IntroAnimation />
       <WorkHistory />
-   </div>       
+   </div>
 </template>
 
 <script setup>

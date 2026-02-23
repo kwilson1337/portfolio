@@ -9,15 +9,15 @@
 <script setup>
 import { useWorkHistoryAnimations } from '@/composables/useWorkHistoryAnimations'
 
-const { 
-	setWorkHistoryRefs,     
+const {
+	setWorkHistoryRefs,
 	animateTitleInOnScroll
 } = useWorkHistoryAnimations()
 
 const workHistoryTitle = ref(null)
-watch(workHistoryTitle, () => {    
+watch(workHistoryTitle, () => {
 	setWorkHistoryRefs({
-		workHistoryTitle: workHistoryTitle.value        
+		workHistoryTitle: workHistoryTitle.value
 	})
 
 	animateTitleInOnScroll()
@@ -33,15 +33,15 @@ watch(workHistoryTitle, () => {
     justify-content: center;
 
     &__title {
-        position: relative;                       
+        position: relative;
 
-        h1 {                            
+        h1 {
             @include rfs(60, 180);
             text-align: center;
-            transform-style: preserve-3d;   
-            margin: 0px;    
-            position: relative;                          
+            transform-style: preserve-3d;
+            margin: 0px;
+            position: relative;
         }
-    } 
+    }
 }
 </style>

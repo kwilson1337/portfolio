@@ -1,17 +1,17 @@
 <template>
     <section ref="mainContainer" class="work-history">
         <Container>
-            <div class="work-history__inner">                                               
-                <WorkHistoryIntro />                               
+            <div class="work-history__inner">
+                <WorkHistoryIntro />
             </div>
-        </Container>        
+        </Container>
         <div class="work-history__items">
-             <History 
-                v-for="item in historyData" 
+             <History
+                v-for="item in historyData"
                 :key="item.title"
                 :history-data="item"
             />
-        </div>       
+        </div>
     </section>
 </template>
 
@@ -19,12 +19,12 @@
 import Container from '@/components/Container'
 import WorkHistoryIntro from './WorkHistoryIntro.vue'
 import History from './History.vue';
-import { 
+import {
 	nurocor_historyDateGradStart,
 	nurocor_historyDateGradEnd,
 	nurocor_backgroundGrad,
 	stova_backgroundGrad,
-	stova_historyDateGradEnd, 
+	stova_historyDateGradEnd,
 	stova_historyDateGradStart,
 	brandCoders_backgroundGrad,
 	brandCoders_historyDateGradStart,
@@ -58,10 +58,10 @@ const historyData = [
 </script>
 
 <style lang="scss" scoped>
-.work-history {            
+.work-history {
     max-width: 100%;
     overflow: hidden;
-    border-top: 1px solid $color1;    
+    border-top: 1px solid $color1;
 
     &__items {
         position: relative;

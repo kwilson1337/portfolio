@@ -3,10 +3,10 @@ import { fileURLToPath } from 'node:url'
 
 export default defineNuxtConfig({
 	app: {
-		pageTransition: { 
+		pageTransition: {
 			name: 'page',
 			mode: 'out-in',
-			css: false 		
+			css: false
 		},
 	},
 	modules: [
@@ -16,14 +16,14 @@ export default defineNuxtConfig({
 				 '@pinia/nuxt',
 				 '@nuxt/image'
 	],
-	devtools: { enabled: true },	
+	devtools: { enabled: true },
 	alias: {
 		'@assets': fileURLToPath(new URL('./assets', import.meta.url)),
 		'@': fileURLToPath(new URL('./', import.meta.url)),
 	},
-	compatibilityDate: '2025-07-15',	
+	compatibilityDate: '2025-07-15',
 	css: [
-		'@assets/styles/default.scss'		
+		'@assets/styles/default.scss'
 	],
 	vite: {
 		css: {

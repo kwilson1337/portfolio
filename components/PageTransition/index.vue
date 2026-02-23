@@ -1,7 +1,7 @@
 <template>
-     <div class="page-transition">        
+     <div class="page-transition">
         <div ref="firstScrim" class="page-transition__block --first"/>
-        <div ref="secondScrim" class="page-transition__block --second" />                           
+        <div ref="secondScrim" class="page-transition__block --second" />
     </div>
 </template>
 
@@ -20,12 +20,12 @@ const { activeScrimState, resetScrimState } = usePageTransitionAnimations()
 const { fadeLinksIn, fadeLinksOut } = useMenuAnimations()
 
 const { setTransitionElements } = usePageTransitionStore()
-watch(() => [firstScrim.value, secondScrim.value], (newVal) => {    
+watch(() => [firstScrim.value, secondScrim.value], (newVal) => {
 	setTransitionElements(newVal)
 }, { immediate: true })
 
-watch(isActive, () => {       
-	if(isActive.value) {        
+watch(isActive, () => {
+	if(isActive.value) {
 		const { secondTimeline } = activeScrimState([firstScrim.value, secondScrim.value])
 		secondTimeline.add(fadeLinksIn(menuLinkRefs.value ?? []))
 	} else {
@@ -37,19 +37,19 @@ watch(isActive, () => {
 
 <style lang="scss" scoped>
 .page-transition {
-    z-index: 1;       
-    visibility: hidden;        
+    z-index: 1;
+    visibility: hidden;
 
     &__block {
         position: fixed;
         top: 0px;
         width: 100%;
         background-color: $color1;
-        height: 100%;        
+        height: 100%;
         right: 0;
 
         &.--second {
-            background-color: $color2;        
+            background-color: $color2;
         }
     }
 }
