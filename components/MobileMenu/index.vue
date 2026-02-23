@@ -3,7 +3,7 @@
         <Container>
             <div class="mobile-menu__inner">
                 <div class="mobile-menu__logo">
-                    <Logo />
+                    <Logo @logo:click="resetMenu" />
                 </div>
 
                 <div

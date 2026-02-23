@@ -2,7 +2,7 @@
     <div class="header-logo">
         <div class="header-logo__inner" @mouseenter="onEnter">
             <h2>
-                <NuxtLink to="/">
+                <NuxtLink to="/" @click="emits('logo:click')">
                     <span>K</span>
                     <span>W</span>
 
@@ -16,6 +16,8 @@
 
 <script setup>
 import { gsap } from 'gsap'
+
+const emits = defineEmits(['logo:click'])
 
 const onEnter = () => {
 	const firstTl = gsap.timeline({ delay: 0 })
