@@ -18,8 +18,8 @@
 import { gsap } from 'gsap'
 
 const onEnter = () => {
-	const firstTl = gsap.timeline({ delay: .3 })
-	const secondTl = gsap.timeline({ delay: .8 })
+	const firstTl = gsap.timeline({ delay: 0 })
+	const secondTl = gsap.timeline({ delay: .3 })
 
 	gsap.set('.header-logo__transition.--first', { scaleX: 0, transformOrigin: 'left', width: '100%' })
 	firstTl
