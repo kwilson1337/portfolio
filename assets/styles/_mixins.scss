@@ -8,3 +8,9 @@ $browser-context: 16;
   
   font-size: clamp(rem($min-size), $preferred-value, rem($max-size));
 }
+
+@mixin responsive-styles($property, $min-size, $max-size, $min-viewport: 560px, $max-viewport: 1440px) {  
+  $preferred-value: calc(rem($min-size) + (rem($max-size) - rem($min-size)) * ((100vw - $min-viewport) / ($max-viewport - $min-viewport)));
+
+  #{$property}: clamp(rem($min-size), $preferred-value, rem($max-size));
+}
