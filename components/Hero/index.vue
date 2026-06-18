@@ -5,26 +5,26 @@
             <div class="kw-hero-section__inner">
                 <div class="kw-hero-section__col --left">   
                     <h1 class="text-glow">
-                        Design your brand,
-                        <span>deeply.</span>
+                        Coming Soon
+                        <!-- <span>deeply.</span> -->
                     </h1>     
-                    <h2>We bridge the gap between structured precision and natural elegance to create identities that breathe and evolve.</h2>       
+                    <!-- <h2>We bridge the gap between structured precision and natural elegance to create identities that breathe and evolve.</h2>        -->
 
-                    <div class="kw-hero-section__actions">
+                    <!-- <div class="kw-hero-section__actions">
                         <a href="" class="kw-button --button1">Start Project</a>
                         <a href="" class="kw-button --button2">Our Work</a>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="kw-hero-section__col --right">
                     <div class="kw-hero-section__highlight"></div>
                     <div id="threejs-container-ANIMATION_15" class="kw-hero-section__flower"></div>
                 </div>            
             </div>
-            <div class="kw-hero-section__scroll">SCROLL</div>
+            <!-- <div class="kw-hero-section__scroll">SCROLL</div> -->
        </Container>            
     </section>
 
-    <RootsAnimation />
+    <!-- <RootsAnimation /> -->
 </template>
 
 <script setup>

@@ -1,6 +1,6 @@
 <template>
     <header>
-        <MobileMenu />
+        <!-- <MobileMenu /> -->
     </header>
      <main>
         <slot />
