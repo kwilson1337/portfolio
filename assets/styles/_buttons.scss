@@ -1,0 +1,27 @@
+.kw-button {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 32px;
+    padding-right: 32px;
+    border-radius: rem(8);
+    text-decoration: none;
+    font-weight: 500;
+    transition: .2s ease-in-out all;
+
+    &.--button1 {
+        background-color: $color1;
+        color: $color2;
+
+        &:hover {
+            background-color: $color3;
+        }
+    }
+
+    &.--button2 {
+        border: 1px solid rgba($color3, .3);
+        
+        &:hover {
+            background-color: rgba($color3, .3);
+        }
+    }
+}

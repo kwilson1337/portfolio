@@ -44,7 +44,7 @@ watch(isActive, () => {
         position: fixed;
         top: 0px;
         width: 100%;
-        background-color: $color1;
+        background-color: $color3;
         height: 100%;
         right: 0;
 

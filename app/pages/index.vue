@@ -1,12 +1,9 @@
 <template>
    <div>
-      <!-- <h1 style="height: 500px">Home</h1>       -->
-       <IntroAnimation />
-      <WorkHistory />
+      <HeroSection />
    </div>
 </template>
 
 <script setup>
-import IntroAnimation from '@/components/IntroAnimation'
-import WorkHistory from '@/components/WorkHistory'
+import HeroSection from '@/components/Hero'
 </script>

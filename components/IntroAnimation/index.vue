@@ -6,15 +6,19 @@
                     <div>
                         <h1 ref="endCopy">
                             <span>Kyle</span>
-                            <span>Wilson</span>
+                            <span>Creative</span>
                         </h1>
 
                         <div ref="endTransitionFirst" class="intro-animation__transition --first"/>
                     </div>
                 </div>
                 <div class="intro-animation__start">
-                    <h2 ref="startCopyFirst">K</h2>
-                    <h2 ref="startCopySecond">W</h2>
+                    <!-- <h2 ref="startCopyFirst">K</h2>
+                    <h2 ref="startCopySecond">C</h2> -->
+                    <img
+                        src="/images/kyle-creative-logo.png"
+                        alt="Discover Nuxt"
+                    >
 
                     <div ref="startTransitionFirst" class="intro-animation__transition --first"/>
                 </div>

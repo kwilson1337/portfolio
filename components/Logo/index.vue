@@ -3,8 +3,12 @@
         <div class="header-logo__inner" @mouseenter="onEnter">
             <h2>
                 <NuxtLink to="/" @click="emits('logo:click')">
-                    <span>K</span>
-                    <span>W</span>
+                    <!-- <span>K</span>
+                    <span>W</span> -->
+                    <img
+                        src="/images/dd-logo-white.png"
+                        alt="Discover Nuxt"
+                    >
 
                     <div class="header-logo__transition --first"/>
                     <div class="header-logo__transition --second"/>
@@ -38,16 +42,6 @@ const onEnter = () => {
 </script>
 
 <style lang="scss" scoped>
-@mixin dotStyles {
-    width: 8px;
-    height: 8px;
-    background-color: $color1;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
 .header-logo {
     position: relative;
 
@@ -61,37 +55,15 @@ const onEnter = () => {
         text-decoration: none;
     }
 
-    span {
-        position: relative;
-
-        &::before {
-            content: '';
-            @include dotStyles;
-            left: -15px;
-        }
-
-        & + span {
-            margin-left: rem(20);
-
-            &::before {
-                content: '';
-                @include dotStyles;
-                left: -15px;
-            }
-
-            &::after {
-                content: '';
-                @include dotStyles;
-                right: -15px;
-            }
-        }
+    img {
+        max-width: rem(300);
     }
-
+ 
     &__transition {
         position: absolute;
         top: 0px;
         left: 0px;
-        background-color: $color1;
+        background-color: $color3;
         height: 100%;
 
         &.--second {

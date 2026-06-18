@@ -2,7 +2,8 @@ $white: #fff;
 $black: #333;
 
 $color1: #eeeeee;
-$color2: #020420;
+$color2: darken(#213528, 5%);
+$color3: rgb(180, 205, 184);
 
 $nurocorColors: (
     historyDateGradStart: linear-gradient(to bottom, #009587 0%, #012a2e 40%),
@@ -23,4 +24,4 @@ $brandCoders: (
     historyDateGradEnd: linear-gradient(to bottom, $color2 65%, #b226ae 90%),
 );
 
-$font1: "Poppins", sans-serif;
+$font1: "Montserrat", sans-serif;
