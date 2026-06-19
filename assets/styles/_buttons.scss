@@ -7,7 +7,15 @@
     text-decoration: none;
     font-weight: 500;
     transition: .2s ease-in-out all;
+    display: inline-block;
+    border: none;
 
+    @include mq('sm') {
+        display: block;
+        text-align: center;
+    }
+ 
+    
     &.--button1 {
         background-color: $color1;
         color: $color2;
@@ -22,6 +30,26 @@
         
         &:hover {
             background-color: rgba($color3, .3);
+        }
+    }
+
+    &.--button3 {
+        background-color: $color2;
+        border: 1px solid $color2;        
+
+        &:hover {
+            background-color: $color3;
+            color: $color2;
+        }
+    }
+
+    &.--button4 {
+        background-color: $color4;
+        border-radius: 20px;
+        color: $color1;        
+
+        &:hover {
+            background-color: $color2;
         }
     }
 }

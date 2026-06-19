@@ -5,6 +5,7 @@
      <main>
         <slot />
 
+        <Footer />
         <PageTransition />
     </main>
 </template>
@@ -12,6 +13,7 @@
 <script setup>
 import MobileMenu from '@/components/MobileMenu/index.vue'
 import PageTransition from '@/components/PageTransition'
+import Footer from '@/components/Footer'
 </script>
 
 <style scoped lang="scss">
@@ -24,11 +26,4 @@ header {
     top: 0px;
     z-index: 2;
 }
-
-// header nav {
-//     display: flex;
-//     justify-content: flex-end;
-//     align-items: center;
-//     padding: 15px;
-// }
 </style>

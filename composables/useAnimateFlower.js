@@ -57,7 +57,8 @@ export const useAnimateFlower = (querySelector) => {
         scene.add(pointLight);
 
         let growth = 0;
-        const growthSpeed = 0.020;
+        // const growthSpeed = 0.020;
+        const growthSpeed = 1;
 
         function animate() {
             requestAnimationFrame(animate);

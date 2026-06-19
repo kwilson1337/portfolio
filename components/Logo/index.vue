@@ -8,8 +8,8 @@
                         alt="Discover Nuxt"
                     >
 
-                    <div class="header-logo__transition --first"/>
-                    <div class="header-logo__transition --second"/>
+                    <div ref="transitionFirst" class="header-logo__transition --first"/>
+                    <div ref="transitionSecond" class="header-logo__transition --second"/>
                 </NuxtLink>
             </h1>
         </div>
@@ -21,21 +21,23 @@ import { gsap } from 'gsap'
 
 const emits = defineEmits(['logo:click'])
 
-const onEnter = () => {
+const transitionFirst = ref(null)
+const transitionSecond = ref(null)
+const onEnter = () => {    
 	const firstTl = gsap.timeline({ delay: 0 })
 	const secondTl = gsap.timeline({ delay: .3 })
 
-	gsap.set('.header-logo__transition.--first', { scaleX: 0, transformOrigin: 'left', width: '100%' })
+	gsap.set(transitionFirst.value, { scaleX: 0, transformOrigin: 'left', width: '100%' })
 	firstTl
-		.to('.header-logo__transition.--first', { scaleX: 1, duration: 0.2, delay: 0 })
-		.set('.header-logo__transition.--first', { transformOrigin: 'right' })
-		.to('.header-logo__transition.--first', { scaleX: 0, duration: 0.2, delay: 0.3 })
+		.to(transitionFirst.value, { scaleX: 1, duration: 0.2, delay: 0 })
+		.set(transitionFirst.value, { transformOrigin: 'right' })
+		.to(transitionFirst.value, { scaleX: 0, duration: 0.2, delay: 0.3 })
 
-	gsap.set('.header-logo__transition.--second', { scaleX: 0, transformOrigin: 'left', width: '100%' })
+	gsap.set(transitionSecond.value, { scaleX: 0, transformOrigin: 'left', width: '100%' })
 	secondTl
-		.to('.header-logo__transition.--second', { scaleX: 1, duration: 0.2, delay: 0 })
-		.set('.header-logo__transition.--second', { transformOrigin: 'right' })
-		.to('.header-logo__transition.--second', { scaleX: 0, duration: 0.2, delay: 0.3 })
+		.to(transitionSecond.value, { scaleX: 1, duration: 0.2, delay: 0 })
+		.set(transitionSecond.value, { transformOrigin: 'right' })
+		.to(transitionSecond.value, { scaleX: 0, duration: 0.2, delay: 0.3 })
 }
 </script>
 

@@ -16,8 +16,7 @@
                     </div>
                 </div>
                 <div class="kw-hero-section__col --right">
-                    <div class="kw-hero-section__highlight"></div>
-                    <div id="threejs-container-ANIMATION_15" class="kw-hero-section__flower"></div>
+                    <FlowerAnimation />                  
                 </div>            
             </div>
             <div class="kw-hero-section__scroll">SCROLL</div>
@@ -30,22 +29,24 @@
 <script setup>
 import { onMounted } from 'vue'
 import Container from '@/components/Container'
-import { useAnimateFlower } from '../../composables/useAnimateFlower'
 import RootsAnimation from '@/components/Hero/RootsAnimation.vue'
+import FlowerAnimation from '@/components/FlowerAnimation'
 
 const headerText = 'Design your brand,'
 const headerAccent = 'deeply'
-const animateFlower = useAnimateFlower()
-onMounted(() => {  
-    animateFlower.animateFlower('threejs-container-ANIMATION_15')                                 
-})
-    
 </script>
 
 <style lang="scss" scoped>
 .kw-hero-section {
     position: relative;    
-    height: 75vh;
+    height: calc(75vh + 60px);
+    padding-top: rem(0);
+
+    @include mq('md') {
+        height: 100%;
+        padding-top: rem(40);
+        padding-bottom: rem(100);
+    }
     
     &__bg {
         background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
@@ -60,11 +61,30 @@ onMounted(() => {
     &__inner {
         display: flex;      
         align-items: center;  
+
+        @include mq('sm') {
+            display: block;
+        }
     }
 
     &__col {
-        flex-basis: 50%;
+        flex-basis: 40%;
         position: relative;
+               
+        &.--left {
+            flex-basis: 60%;      
+
+            @include mq('sm') {
+                text-align: center
+            }      
+        }
+
+        &.--right {
+            @include mq('sm') {
+                display: flex;
+                justify-content: center;                
+            }
+        }
 
         h1 {
             @include rfs(36, 64);
@@ -94,7 +114,13 @@ onMounted(() => {
     &__actions {
         margin-top: rem(40);
         display: flex;
-        gap: rem(20)
+        gap: rem(20);
+       
+        @include mq('sm') {
+            flex-direction: column;
+            gap: rem(15);
+        }
+        
     }
 
     &__highlight {
@@ -111,10 +137,13 @@ onMounted(() => {
 
     &__flower {
         width: rem(600);
-        height: rem(600);
-        // width: calc(100% - 500px);
-        // height: calc(100% - 500px);
-        position: relative;        
+        height: rem(600);     
+        position: relative;   
+        
+        @include mq('md') {
+            width: rem(300);
+            height: rem(300);
+        }
     }
 
     &__scroll {
@@ -125,6 +154,10 @@ onMounted(() => {
         transform: translateX(-50%);
         letter-spacing: 0.1em;
         font-size: rem(10);
+
+        @include mq('md') {
+            bottom: 5%;
+        }
 
         &::after {
             content: '';

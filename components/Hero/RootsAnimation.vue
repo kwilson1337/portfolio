@@ -7,7 +7,7 @@
                 </div>
 
                 <div class="roots-animation__roots">
-                    <svg class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-full pointer-events-none" preserveaspectratio="none" viewbox="0 0 800 300">
+                    <svg preserveaspectratio="none" viewbox="0 0 800 300">
                     <!-- Root 1 (Main) -->
                     <path class="root-path" d="M400,0 C400,50 380,80 370,120 C360,160 390,200 400,250 C410,300 420,350 420,400" stroke-linecap="round" stroke-width="4"></path>
                     <!-- Root 2 (Branch Left) -->
@@ -24,23 +24,40 @@
                 <div class="roots-animation__col --right h1">
                     <h2>Work</h2>
                 </div>
-            </div>            
+            </div>    
+            
+            <div class="roots-animation__mobile-title">
+                <h2>Our Work</h2>
+            </div>
         </Container>    
     </div>
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
 import { useAnimateRoots } from '../../composables/useAnimateRoots';
 import Container from '@/components/Container'
 
 const animateRoots = useAnimateRoots()
-onMounted(() => {
-    const rootPaths = document.querySelectorAll('.root-path');
-    const rootTrigger = document.getElementById('root-growth-trigger');
+let cleanupRoots 
+onMounted(async () => {       
+    nextTick(() => {        
+        setTimeout(() => {            
+            const rootPaths = document.querySelectorAll('.root-path');
+            const rootTrigger = document.getElementById('root-growth-trigger');
 
-    animateRoots.animateRoots(rootPaths, rootTrigger)
+            if (rootTrigger && rootPaths.length > 0) {                
+                cleanupRoots = animateRoots.animateRoots(rootPaths, rootTrigger)
+            }
+        }, 50)
+    })
 }) 
+
+onBeforeUnmount(() => {
+  if (cleanupRoots) {
+    cleanupRoots()
+  }
+})
 </script>
 
 <style lang="scss" scoped>
@@ -61,12 +78,17 @@ onMounted(() => {
 
     svg {
         height: 250px;
+        width: rem(650);        
     }
 
     &__inner {
         display: flex;
         justify-content: space-between;
-        align-items: center;        
+        align-items: center;   
+        
+        @include mq('md') {
+            justify-content: center;
+        }       
     }
 
     &__col {
@@ -76,6 +98,10 @@ onMounted(() => {
         min-height: 200px;
         position: relative;
 
+        @include mq('sm') {
+            display: none;
+        }
+       
         &.--left {
             text-align: right;     
 
@@ -100,6 +126,12 @@ onMounted(() => {
         }
     }
 
+    &__roots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .root-path {
         stroke-dasharray: 1000;
         stroke-dashoffset: 1000;
@@ -117,6 +149,23 @@ onMounted(() => {
 
         &.--opacity-60 {
             opacity: 60%;
+        }
+    }
+
+    &__mobile-title {
+        display: none;
+
+        @include mq('sm') {
+            display: block;
+            text-align: center;
+            margin-bottom: rem(20);
+            margin-top: rem(20);
+        }
+
+        h2 {
+            color: $color2;
+            font-size: rem(42);  
+            margin: 0px;          
         }
     }
 }

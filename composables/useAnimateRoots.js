@@ -1,61 +1,102 @@
 import * as THREE from 'three'
 
 export const useAnimateRoots = (rootPaths, rootTrigger) => {
-    const animateRoots = (rootPaths, rootTrigger) => {
+    const animateRoots = (rootPaths, rootTrigger) => {        
         if (!rootPaths || !rootTrigger) return;
 
-        // Initialize root path lengths
-        rootPaths.forEach(path => {
-            const length = path.getTotalLength();
+        // Cache to store lengths safely
+        const pathData = [];
 
-            path.style.strokeDasharray = length;
-            path.style.strokeDashoffset = length;
-            path.dataset.length = length;
-        });
+        // Helper to calculate or recalculate path lengths safely
+        const initPathLengths = () => {
+            rootPaths.forEach((path, index) => {
+                const length = path.getTotalLength();
+                // Fallback to a default if the browser reports 0 during layout calculation
+                const validLength = length > 0 ? length : (pathData[index]?.length || 0);
 
-        const updateRoots = () => {
-            const rect = rootTrigger.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-
-            const start = windowHeight;
-            const end = -rect.height;
-
-            let progress = (rect.top - start) / (end - start);
-            progress = Math.max(0, Math.min(1, progress));
-
-            // Smaller SVGs animate faster
-            const svgHeight = rootTrigger.offsetHeight;
-            const speedFactor = Math.max(1.5, 500 / svgHeight);
-
-            rootPaths.forEach(path => {
-                const length = parseFloat(path.dataset.length);
-
-                const pathProgress = Math.min(
-                    1,
-                    progress * speedFactor
-                );
-
-                path.style.strokeDashoffset =
-                    length * (1 - pathProgress);
+                path.style.strokeDasharray = validLength;
+                // Retain existing progress if recalculating
+                if (!pathData[index]) {
+                    path.style.strokeDashoffset = validLength;
+                }
+                
+                pathData[index] = { element: path, length: validLength };
             });
         };
 
-        let ticking = false;
+        const updateRoots = () => {
+            const scrollTop = window.scrollY || window.pageYOffset;
+            
+            // Calculate the element's position relative to the entire document.
+            // This is immune to horizontal shifting layout bugs on page entry.
+            const rect = rootTrigger.getBoundingClientRect();
+            const elementPageTop = rect.top + scrollTop;
+            const svgHeight = rect.height || rootTrigger.clientHeight;
+            
+            const windowHeight = window.innerHeight;
 
-        window.addEventListener('scroll', () => {
+            // Define start and end triggers relative to document scroll
+            const startTrigger = elementPageTop - windowHeight;
+            const endTrigger = elementPageTop + svgHeight;
+
+            // Calculate progress based on scroll height
+            let progress = (scrollTop - startTrigger) / (endTrigger - startTrigger);
+            progress = Math.max(0, Math.min(1, progress));
+
+            const speedFactor = Math.max(1.5, 500 / svgHeight);
+
+            pathData.forEach(pathObj => {
+                const pathProgress = Math.min(1, progress * speedFactor);
+                pathObj.element.style.strokeDashoffset = pathObj.length * (1 - pathProgress);
+            });
+        };
+
+        // Initialize lengths immediately
+        initPathLengths();
+
+        let ticking = false;
+        const handleScroll = () => {
             if (!ticking) {
                 requestAnimationFrame(() => {
                     updateRoots();
                     ticking = false;
                 });
-
                 ticking = true;
             }
-        });
+        };
 
-        // Initial render
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('resize', updateRoots, { passive: true });
+
+        // Safeguard 1: Recalculate dimensions when the element changes sizes or layout settles
+        const resizeObserver = new ResizeObserver(() => {
+            initPathLengths();
+            updateRoots();
+        });
+        resizeObserver.observe(rootTrigger);
+
+        // Safeguard 2: Recalculate the moment it visually arrives on the screen
+        const intersectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    initPathLengths();
+                    updateRoots();
+                }
+            });
+        }, { threshold: [0, 0.1] });
+        intersectionObserver.observe(rootTrigger);
+
+        // Initial render snapshot
         updateRoots();
-    }
+
+        // Return cleanup function to call in onBeforeUnmount()
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', updateRoots);
+            resizeObserver.disconnect();
+            intersectionObserver.disconnect();
+        };
+    };
 
     return {
         animateRoots

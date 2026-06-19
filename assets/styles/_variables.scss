@@ -4,6 +4,9 @@ $black: #333;
 $color1: #eeeeee;
 $color2: darken(#213528, 5%);
 $color3: rgb(180, 205, 184);
+$color4: #213528;
+
+$transition: .2s ease-in-out all;
 
 $nurocorColors: (
     historyDateGradStart: linear-gradient(to bottom, #009587 0%, #012a2e 40%),

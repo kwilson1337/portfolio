@@ -107,7 +107,7 @@ onUnmounted(cleanUp)
     position: relative;
     z-index: 3;
     transition: .2s ease-in-out all;
-    border: 1px solid transparent;    
+    border-bottom: 1px solid transparent;    
 
     
     &.--active {
@@ -126,7 +126,7 @@ onUnmounted(cleanUp)
         }
 
         .mobile-menu__logo {
-            max-width: rem(200);
+            max-width: rem(200);           
         }
     }
 
@@ -162,6 +162,10 @@ onUnmounted(cleanUp)
     &__logo {
         max-width: rem(300);
         transition: .2s ease-in-out all;
+
+         @include mq('sm') {
+            max-width: rem(200);
+        }
     }
 }
 

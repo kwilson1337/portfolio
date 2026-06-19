@@ -9,6 +9,10 @@
                         :work-data="item"
                     />             
                 </div>
+
+                <div class="kw-work-loop__view-more">
+                    <a href="#" class="kw-button --button3">View all</a>
+                </div>
             </div>
         </Container>        
     </section>
@@ -49,9 +53,13 @@ const workLoop = [
     
     &__grid {
         display: grid;
-        // grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        grid-template-columns: repeat(3, 1fr);
-        gap: rem(15)
+        grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));        
+        gap: rem(15);
+    }
+
+    &__view-more {
+        text-align: center;
+        margin-top: rem(20);
     }
 }
 </style>
