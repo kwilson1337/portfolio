@@ -1,10 +1,8 @@
 <template>
     <div class="header-logo">
         <div class="header-logo__inner" @mouseenter="onEnter">
-            <h2>
-                <NuxtLink to="/" @click="emits('logo:click')">
-                    <!-- <span>K</span>
-                    <span>W</span> -->
+            <h1>
+                <NuxtLink to="/" @click="emits('logo:click')">                  
                     <img
                         src="/images/dd-logo-white.png"
                         alt="Discover Nuxt"
@@ -13,7 +11,7 @@
                     <div class="header-logo__transition --first"/>
                     <div class="header-logo__transition --second"/>
                 </NuxtLink>
-            </h2>
+            </h1>
         </div>
     </div>
 </template>
@@ -45,8 +43,7 @@ const onEnter = () => {
 .header-logo {
     position: relative;
 
-    h2 {
-        font-size: rem(32);
+    h1 {        
         margin: 0px;
         cursor: pointer;
     }
@@ -56,7 +53,7 @@ const onEnter = () => {
     }
 
     img {
-        max-width: rem(300);
+        max-width: 100%;
     }
  
     &__transition {

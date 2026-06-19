@@ -5,7 +5,7 @@
             <div class="kw-hero-section__inner">
                 <div class="kw-hero-section__col --left">   
                     <h1 class="text-glow">
-                        Design your brand,
+                        Helping small business grow
                         <span>deeply.</span>
                     </h1>     
                     <h2>We bridge the gap between structured precision and natural elegance to create identities that breathe and evolve.</h2>       
@@ -46,7 +46,7 @@ onMounted(() => {
 .kw-hero-section {
     position: relative;    
     height: 75vh;
-
+    
     &__bg {
         background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
         position: absolute;
@@ -69,6 +69,7 @@ onMounted(() => {
         h1 {
             @include rfs(36, 64);
             font-weight: 500;
+            line-height: 1.2;
 
             span {
                 font-style: italic;

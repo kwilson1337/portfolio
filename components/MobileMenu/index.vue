@@ -1,8 +1,12 @@
 <template>
-    <div class="mobile-menu">
+    <div 
+        ref="mobileMenu" 
+        class="mobile-menu"
+        :class="{ '--active' : menuIsScrolled }"
+    >
         <Container>
             <div class="mobile-menu__inner">
-                <div class="mobile-menu__logo">
+                <div class="mobile-menu__logo">                    
                     <Logo @logo:click="resetMenu" />
                 </div>
 
@@ -73,12 +77,58 @@ const toggleMenu = () => {
 		resetMenu()
 	}
 }
+
+const mobileMenu = ref(null)
+const menuIsScrolled = ref(false)
+const addClassAfterScroll = (    
+    scrollPoint = 500
+) => {
+    const update = () => {
+        if (window.scrollY >= scrollPoint) {            
+            menuIsScrolled.value = true
+        } else {            
+            menuIsScrolled.value = false
+        }
+    };
+
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+};
+
+let cleanUp
+onMounted(() => {    
+    cleanUp = addClassAfterScroll(mobileMenu.value.clientHeight)
+})
+onUnmounted(cleanUp)
 </script>
 
 <style scoped lang="scss">
 .mobile-menu {
     position: relative;
     z-index: 3;
+    transition: .2s ease-in-out all;
+    border: 1px solid transparent;    
+
+    
+    &.--active {
+        border-bottom: 1px solid $color3;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: $color2;
+            opacity: .6;
+            z-index: -1;
+        }
+
+        .mobile-menu__logo {
+            max-width: rem(200);
+        }
+    }
 
     &__inner {
         padding: rem(5) 0px;
@@ -93,9 +143,8 @@ const toggleMenu = () => {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        gap: 16px;
-        width: 3.5rem;
-        height: 3.5rem;
+        gap: 12px;        
+        height: rem(40);
         cursor: pointer;
 
         &.--disabled {
@@ -104,10 +153,15 @@ const toggleMenu = () => {
     }
 
     &__bar {
-        background-color: $white;
+        background-color: $color1;
         width: 3.5rem;
         height: 3px;
         transform-origin: center;
+    }
+
+    &__logo {
+        max-width: rem(300);
+        transition: .2s ease-in-out all;
     }
 }
 
