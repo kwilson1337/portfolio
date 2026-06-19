@@ -44,7 +44,7 @@ import Container from '@/components/Container'
 
     &__grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);        
+        grid-template-columns: 45% 1fr;
         height: 100vh;
 
         @include mq('sm') {
@@ -73,7 +73,7 @@ import Container from '@/components/Container'
 
             h1,
             p {
-                color: $color2;
+                color: $color4;
             }
         }
     }
