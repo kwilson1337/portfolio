@@ -6,12 +6,12 @@
                     <Logo />
                 </div>
                 <div class="kw-footer__links">
-                    <a 
+                    <NuxtLink
                         v-for="link in siteLinks"
                         :href="link.url"
                     >
                         {{ link.title }}
-                    </a>
+                    </NuxtLink>
                 </div>
             </div>            
         </Container>
@@ -21,7 +21,9 @@
                 <div class="kw-footer__bottom-bar-flex">
                     © 2015-{{ currentYear }} Deeply Designs
 
-                    <a href="/">Deeply Designs</a>
+                    <NuxtLink to="/">
+                        Deeply Designs
+                    </NuxtLink>                    
                 </div>                
             </Container>           
         </div>

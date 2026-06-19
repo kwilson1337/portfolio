@@ -53,17 +53,9 @@ const props = defineProps({
     &__desc {
         p,
         h4 {
-            margin: 0px;            
+            margin: 0px;    
+            color: $color4;        
         }
-    }
-
-    // &__link {
-    //     @include mq('md') {
-    //         a {
-    //             display: block;
-    //             text-align: center;
-    //         }
-    //     }
-    // }
+    }   
 }
 </style>

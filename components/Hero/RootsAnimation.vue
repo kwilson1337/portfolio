@@ -4,21 +4,15 @@
             <div class="roots-animation__inner">
                 <div class="roots-animation__col --left h1">
                     <h2>Our</h2>
-                </div>
-
+                </div>         
                 <div class="roots-animation__roots">
-                    <svg preserveaspectratio="none" viewbox="0 0 800 300">
-                    <!-- Root 1 (Main) -->
-                    <path class="root-path" d="M400,0 C400,50 380,80 370,120 C360,160 390,200 400,250 C410,300 420,350 420,400" stroke-linecap="round" stroke-width="4"></path>
-                    <!-- Root 2 (Branch Left) -->
-                    <path class="root-path --stroke-2 --opacity-60" d="M370,120 C340,140 310,130 290,160 C270,190 280,220 260,260" stroke-linecap="round" stroke-width="2"></path>
-                    <!-- Root 3 (Branch Right) -->
-                    <path class="root-path --stroke-2 --opacity-60" d="M400,180 C430,200 460,190 480,220 C500,250 490,280 510,320" stroke-linecap="round" stroke-width="2"></path>
-                    <!-- Root 4 (Small side root) -->
-                    <path class="root-path --opacity-40" d="M380,80 C360,90 350,85 340,105" stroke-linecap="round" stroke-width="1.5"></path>
-                    <!-- Root 5 (Deeper reaching) -->
-                    <path class="root-path" d="M410,50 C430,80 440,110 435,150 C430,190 415,220 425,280" stroke-linecap="round" stroke-width="3"></path>
-                </svg>
+                    <svg preserveaspectratio="none" viewbox="0 0 800 250">                        
+                        <path class="root-path" d="M400,0 C400,50 380,80 370,120 C360,160 390,200 400,250 C410,300 420,350 420,400" stroke-linecap="round" stroke-width="4"></path>                        
+                        <path class="root-path --stroke-2 --opacity-60" d="M370,120 C340,140 310,130 290,160 C270,190 280,220 260,260" stroke-linecap="round" stroke-width="2"></path>                        
+                        <path class="root-path --stroke-2 --opacity-60" d="M400,180 C430,200 460,190 480,220 C500,250 490,280 510,320" stroke-linecap="round" stroke-width="2"></path>                        
+                        <path class="root-path --opacity-40" d="M380,80 C360,90 350,85 340,105" stroke-linecap="round" stroke-width="1.5"></path>                        
+                        <path class="root-path" d="M410,50 C430,80 440,110 435,150 C430,190 415,220 425,280" stroke-linecap="round" stroke-width="3"></path>
+                    </svg>
                 </div>                
 
                 <div class="roots-animation__col --right h1">
@@ -64,7 +58,7 @@ onBeforeUnmount(() => {
 .roots-animation {
     position: relative;
     overflow: hidden;
-    background-color: $color1;      
+    background-color: $color1;        
     
     &::before {
         content: '';
@@ -75,12 +69,7 @@ onBeforeUnmount(() => {
         width: 100%;
         height: rem(40);
     }
-
-    svg {
-        height: 250px;
-        width: rem(650);        
-    }
-
+    
     &__inner {
         display: flex;
         justify-content: space-between;
@@ -106,18 +95,18 @@ onBeforeUnmount(() => {
             text-align: right;     
 
             h2 {
-                right: -148px;
+                right: -220px;
             }       
         }
 
         &.--right {
             h2 {
-                left: -200px;
+                left: -270px;
             }
         }
       
         h2 {
-            color: $color2;
+            color: $color4;
             @include rfs(42, 124);
             position: absolute;
             top: 50%;
@@ -127,9 +116,16 @@ onBeforeUnmount(() => {
     }
 
     &__roots {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        position: relative;     
+        max-width: rem(800);   
+        width: 100%;
+        height: rem(250);        
+        
+        svg {
+            width: 100%;
+            height: 100%;          
+            display: block;
+        }
     }
 
     .root-path {
