@@ -11,8 +11,12 @@
                     <h2>We bridge the gap between structured precision and natural elegance to create identities that breathe and evolve.</h2>       
 
                     <div class="kw-hero-section__actions">
-                        <a href="" class="kw-button --button1">Start Project</a>
-                        <a href="" class="kw-button --button2">Our Work</a>
+                        <NuxtLink class="kw-button --button1" to="/contact">
+                            Start Project
+                        </NuxtLink>
+                        <NuxtLink class="kw-button --button2">
+                            Our Work
+                        </NuxtLink>                       
                     </div>
                 </div>
                 <div class="kw-hero-section__col --right">
@@ -93,7 +97,8 @@ const headerAccent = 'deeply'
 
             span {
                 font-style: italic;
-                color: rgb(180, 205, 184, 1);
+                color: $color3;
+                @include title-decorator($color3);                
             }
         }
 

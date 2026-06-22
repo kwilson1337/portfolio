@@ -4,7 +4,7 @@
             <div class="kw-thin-cta__inner">
                 <div class="kw-thin-cta__content"><p class="h1">{{ props.title }}</p></div>
                 <div class="kw-thin-cta__link">
-                    <a :href="props.buttonInfo.link" class="kw-button --button2">
+                    <a :href="props.buttonInfo.link" class="kw-button --button3">
                         {{ props.buttonInfo.title }}
                     </a>
                 </div>
@@ -15,6 +15,7 @@
 
 <script setup>
 import Container from '@/components/Container'
+
 const props = defineProps({
     title: {
         type: String,
@@ -26,19 +27,21 @@ const props = defineProps({
             title: 'Start project',
             link: '#'
         })
-    }
+    }   
 })
 </script>
 
 <style lang="scss" scoped>
 .kw-thin-cta {
-    padding: rem(20) 0px;
+    padding: rem(20) 0px;    
+    background-color: $color3;
 
     &__inner {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: rem(20);
+        color: $color4;
 
         .h1 {
             margin: 0px;

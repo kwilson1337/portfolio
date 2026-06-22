@@ -19,7 +19,7 @@
         <div class="kw-footer__bottom-bar">
             <Container>
                 <div class="kw-footer__bottom-bar-flex">
-                    © 2015-{{ currentYear }} Deeply Designs
+                    ©{{ currentYear }} Deeply Designs
 
                     <NuxtLink to="/">
                         Deeply Designs

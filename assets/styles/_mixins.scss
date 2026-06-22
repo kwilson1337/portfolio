@@ -40,3 +40,18 @@ $bp: (
       }
   }   
 }
+
+@mixin title-decorator($color: $color1) {
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    border-bottom: rem(6) solid $color;
+    position: absolute;
+    bottom: rem(-12);
+    left: 0px;
+    width: 45%;
+    border-radius: 8px;
+  } 
+}
