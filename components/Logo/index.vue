@@ -2,9 +2,9 @@
     <div class="header-logo">
         <div class="header-logo__inner" @mouseenter="onEnter">
             <h1>
-                <NuxtLink to="/" @click="emits('logo:click')">                  
+                <NuxtLink to="/" @click="emits('logo:click')" class="header-logo__link">                  
                     <img
-                        src="/images/dd-logo-white.png"
+                        src="/images/logo/dd-logo-white-v2.png"
                         alt="Discover Nuxt"
                     >
 
@@ -68,6 +68,10 @@ const onEnter = () => {
         &.--second {
             background-color: $color2;
         }
+    }
+
+    &__link {
+        border: none;
     }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <section class="kw-capabilities">
-        <div class="kw-capabilities__bg"></div>
+         <BackgroundTexture />
 
         <div class="kw-capabilities__inner">
             <Container>
@@ -22,6 +22,7 @@
 <script setup>
 import Container from '@/components/Container'
 import CapabilityCard from './CapabilityCard.vue';
+import BackgroundTexture from '@/components/BackgroundTexture'
 
 const props = defineProps({
     sectionTitle: {
@@ -53,18 +54,8 @@ const capabilities = [
 .kw-capabilities {
     background-color: $color2;
     position: relative;
-
-    &__bg {
-        background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 100%;
-        height: 100%;
-        opacity: .2;
-        z-index: 0;
-    }
-
+    z-index: 0;
+    
     &__inner {
         position: relative;
         z-index: 1;

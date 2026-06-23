@@ -35,6 +35,7 @@ const props = defineProps({
 
     &__icon {
         font-size: rem(32);
+        color: $color5;
     }
 }
 </style>

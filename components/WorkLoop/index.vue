@@ -50,6 +50,17 @@ const workLoop = [
 .kw-work-loop {
     background-color: $color1;  
     padding-top: rem(20);
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        background: linear-gradient(to top, rgb(23.2151162791, 37.2848837209, 28.1395348837), transparent);
+        filter: blur(8px);
+        bottom: rem(-20);
+        width: 100%;
+        height: 2.5rem;
+    }
     
     &__grid {
         display: grid;

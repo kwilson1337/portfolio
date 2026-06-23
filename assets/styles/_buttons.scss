@@ -35,7 +35,8 @@
 
     &.--button3 {
         background-color: $color2;
-        border: 1px solid $color2;        
+        border: 1px solid $color2;   
+        color: $color1;     
 
         &:hover {
             background-color: $color3;

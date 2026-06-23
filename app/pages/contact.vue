@@ -1,6 +1,6 @@
 <template>
-    <section class="kw-contact-page">
-        <div class="kw-contact-page__bg"></div>
+    <section class="kw-contact-page">        
+         <BackgroundTexture />
         <Container>
              <div class="kw-contact-page__inner">
                 <div class="kw-contact-page__grid">
@@ -23,6 +23,7 @@
 import ContactForm from '@/components/ContactForm'
 import FlowerAnimation from '@/components/FlowerAnimation'
 import Container from '@/components/Container'
+import BackgroundTexture from '@/components/BackgroundTexture'
 </script>
 
 <style lang="scss" scoped>
@@ -30,17 +31,6 @@ import Container from '@/components/Container'
     padding: 0px;
     padding-bottom: rem(80);    
     position: relative;
-
-    &__bg {
-        background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 100%;
-        height: 100%;
-        opacity: .2;
-        z-index: -1;
-    }
 
     &__grid {
         display: grid;
@@ -55,13 +45,6 @@ import Container from '@/components/Container'
     }
 
     &__col {
-
-        &.--left {
-            @include mq('sm') {
-                // display: none;
-            }
-        }
-
         &.--right {
             padding: rem(60);
             background-color: $color1;
@@ -74,6 +57,10 @@ import Container from '@/components/Container'
             h1,
             p {
                 color: $color4;
+            }
+
+            h1 {
+                @include title-decorator($color5);
             }
         }
     }

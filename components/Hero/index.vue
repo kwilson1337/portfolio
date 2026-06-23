@@ -1,6 +1,6 @@
 <template>
     <section class="kw-hero-section">
-        <div class="kw-hero-section__bg"></div>
+        <BackgroundTexture />        
        <Container>
             <div class="kw-hero-section__inner">
                 <div class="kw-hero-section__col --left">   
@@ -35,6 +35,7 @@ import { onMounted } from 'vue'
 import Container from '@/components/Container'
 import RootsAnimation from '@/components/Hero/RootsAnimation.vue'
 import FlowerAnimation from '@/components/FlowerAnimation'
+import BackgroundTexture from '@/components/BackgroundTexture'
 
 const headerText = 'Design your brand,'
 const headerAccent = 'deeply'
@@ -51,17 +52,7 @@ const headerAccent = 'deeply'
         padding-top: rem(40);
         padding-bottom: rem(100);
     }
-    
-    &__bg {
-        background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 100%;
-        height: 100%;
-        opacity: .2;
-    }
-
+      
     &__inner {
         display: flex;      
         align-items: center;  
@@ -94,6 +85,7 @@ const headerAccent = 'deeply'
             @include rfs(36, 64);
             font-weight: 500;
             line-height: 1.2;
+            color: $color1;
 
             span {
                 font-style: italic;
@@ -103,7 +95,7 @@ const headerAccent = 'deeply'
         }
 
         h2 {
-            color: rgb(129, 153, 134, 1);
+            color: $color3;
             font-size: 18px;
             line-height: 28px;
             font-weight: 400;            
