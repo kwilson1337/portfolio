@@ -32,6 +32,10 @@ import BackgroundTexture from '@/components/BackgroundTexture'
     padding-bottom: rem(80);    
     position: relative;
 
+    &__inner {
+        position: relative;
+    }
+
     &__grid {
         display: grid;
         grid-template-columns: 45% 1fr;
