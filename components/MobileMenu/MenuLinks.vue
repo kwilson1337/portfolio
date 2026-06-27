@@ -1,17 +1,21 @@
 <template>
     <div class="menu-links">
         <div class="menu-links__links">
-            <ul>
-                <li 
-                    v-for="link in siteLinks"
-                    :key="link.title"
-                    ref="menuLinks"
-                    class="h1"
-                    @click="emits('menuLinks:click',link.url)"
-                >
-                    {{ link.title }}                     
-                </li>  
-            </ul>
+            <nav>
+                <ul>
+                    <li
+                        v-for="link in siteLinks"
+                        :key="link.title"
+                        ref="menuLinks"
+                        class="h1"
+                        @click="emits('menuLinks:click')"
+                    >
+                        <NuxtLink :to="link.url">
+                            {{ link.title }}
+                        </NuxtLink>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </template>
@@ -21,8 +25,8 @@ import { siteLinks } from '@/constants'
 import { useMobileMenu } from '@/store/mobileMenu'
 
 const emits = defineEmits(['menuLinks:click'])
-const menuLinks = ref(null)
 
+const menuLinks = ref(null)
 const { setMenuLinkRefs } = useMobileMenu()
 watch(menuLinks, () => {
 	setMenuLinkRefs(menuLinks.value)
@@ -31,8 +35,8 @@ watch(menuLinks, () => {
 
 <style lang="scss" scoped>
 .menu-links {
-    &__links {     
-        color: $color1;  
+    &__links {
+        color: $color1;
 
          ul {
             padding-left: 0px;
@@ -44,6 +48,10 @@ watch(menuLinks, () => {
 
                 & + li {
                     margin-top: 10px;
+                }
+
+                a {
+                    text-decoration: none;
                 }
             }
         }

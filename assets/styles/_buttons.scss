@@ -1,0 +1,65 @@
+.kw-button {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 32px;
+    padding-right: 32px;
+    border-radius: rem(8);
+    text-decoration: none;
+    font-weight: 500;
+    transition: .2s ease-in-out all;
+    display: inline-block;
+    border: none;
+
+    @include mq('sm') {
+        display: block;
+        text-align: center;
+    }
+
+    &:disabled {
+        cursor: unset;      
+    }
+ 
+    
+    &.--button1 {
+        background-color: $color1;
+        color: $color2;
+
+        &:hover {
+            background-color: $color3;
+        }
+    }
+
+    &.--button2 {
+        border: 1px solid rgba($color3, .3);
+        
+        &:hover {
+            background-color: rgba($color3, .3);
+        }
+    }
+
+    &.--button3 {
+        background-color: $color2;
+        border: 1px solid $color2;   
+        color: $color1;     
+
+        &:hover {
+            background-color: $color3;
+            color: $color2;
+        }
+    }
+
+    &.--button4 {
+        background-color: $color4;
+        border-radius: 20px;
+        color: $color1;        
+
+        &:hover {
+            background-color: $color2;
+        }
+
+        &:disabled {
+            background-color: gray;
+            color: #333;
+        }
+    }
+}

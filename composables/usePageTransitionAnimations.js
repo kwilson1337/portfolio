@@ -11,12 +11,12 @@ export const usePageTransitionAnimations = () => {
 
 		firstTimeline.fromTo(first, {
 			width: '0%',
-			right: 0,			
+			right: 0,
 		}, {
 			width: '100%',
 			right: 0,
 			ease: 'power1.in',
-			visibility: 'visible',		
+			visibility: 'visible',
 		})
 		secondTimeline.fromTo(second, {
 			width: '0%',
@@ -25,11 +25,11 @@ export const usePageTransitionAnimations = () => {
 			width: '100%',
 			right: 0,
 			ease: 'power1.in',
-			visibility: 'visible',			
+			visibility: 'visible',
 		})
 
 		return {
-			firstTimeline, 
+			firstTimeline,
 			secondTimeline
 		}
 	}
@@ -37,20 +37,20 @@ export const usePageTransitionAnimations = () => {
 	const resetScrimState = (refs = [], onComplete) => {
 		const [first, second] = refs
 		const firstTimeline = gsap.timeline({ delay: .5, onComplete })
-		const secondTimeline = gsap.timeline({ 
+		const secondTimeline = gsap.timeline({
 			delay: .1,
-			onComplete, 
+			onComplete,
 			onStart: () => setIsAnimating(true)
 		})
 
 		firstTimeline.fromTo(first, {
 			width: '100%',
-			right: 0,			
-			visibility: 'visible',					
+			right: 0,
+			visibility: 'visible',
 		}, {
 			width: '0%',
 			right: 0,
-			ease: 'power1.out',			    
+			ease: 'power1.out',
 		})
 		firstTimeline.to(first, { visibility: 'hidden' })
 
@@ -62,18 +62,18 @@ export const usePageTransitionAnimations = () => {
 		}, {
 			width: '0%',
 			right: 0,
-			ease: 'power1.out', 			       
-		})	
-		secondTimeline.to(second, 
-			{ 
+			ease: 'power1.out',
+		})
+		secondTimeline.to(second,
+			{
 				visibility: 'hidden',
 				onComplete: () => {
 					setIsAnimating(false)
 				}
-			})   
-        
+			})
+
 		return {
-			firstTimeline, 
+			firstTimeline,
 			secondTimeline
 		}
 	}

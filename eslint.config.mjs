@@ -6,6 +6,8 @@ export default withNuxt({
 		'indent': ['error', 'tab'],
 		'quotes': ['error', 'single'],
 		'vue/multi-word-component-names': 'off',
-		'vue/no-multiple-template-root': 'off'
+		'vue/no-multiple-template-root': 'off',
+		'no-multi-spaces': 'error',
+    	'no-trailing-spaces': 'error',
 	}
 })

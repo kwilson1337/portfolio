@@ -10,7 +10,7 @@ export const usePageTransitionStore = defineStore('pageTransitionStore', () => {
 	const setTransitionElements = (state) => {
 		transitionElements.value = state
 	}
-	
+
 	return {
 		transitionElements,
 		setTransitionElements,
