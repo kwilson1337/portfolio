@@ -26,21 +26,29 @@ const workLoop = [
     {
         title: 'Therapy With Andy',
         desc: 'Andy is a local therapist in Orlando Fl',
+        image: '/images/work-history/andy-watson/andy-watson-logo-white.png',
+        accentColor: '#082b3a',
         link: '/'
     },
     {
         title: 'Therapy With Andy',
         desc: 'Andy is a local therapist in Orlando Fl',
+        image: '/images/work-history/andy-watson/andy-watson-logo-white.png',
+        accentColor: '#082b3a',
         link: '/'
     },
     {
         title: 'Therapy With Andy',
         desc: 'Andy is a local therapist in Orlando Fl',
+        image: '/images/work-history/andy-watson/andy-watson-logo-white.png',
+        accentColor: '#082b3a',
         link: '/'
     },
     {
         title: 'Therapy With Andy',
         desc: 'Andy is a local therapist in Orlando Fl',
+        image: '/images/work-history/andy-watson/andy-watson-logo-white.png',
+        accentColor: '#082b3a',
         link: '/'
     }
 ]

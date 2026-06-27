@@ -83,16 +83,20 @@ const menuIsScrolled = ref(false)
 const addClassAfterScroll = (    
     scrollPoint = 500
 ) => {
-    const update = () => {
-        if (window.scrollY >= scrollPoint) {            
+    const buffer = 30
+
+    const update = () => {        
+        const currentScroll = Number.parseInt(window.scrollY);
+        
+        if (currentScroll >= scrollPoint) {            
             menuIsScrolled.value = true
-        } else {            
+        } else if (currentScroll < (scrollPoint - buffer)) {                        
             menuIsScrolled.value = false
         }
     };
 
-    window.addEventListener('scroll', update, { passive: true });
-    update();
+    window.addEventListener('scroll', update, { passive: true })
+    update()
 };
 
 let cleanUp

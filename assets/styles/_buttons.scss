@@ -9,6 +9,7 @@
     transition: .2s ease-in-out all;
     display: inline-block;
     border: none;
+    font-family: $font1;
 
     @include mq('sm') {
         display: block;

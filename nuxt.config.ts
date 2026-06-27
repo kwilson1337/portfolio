@@ -52,9 +52,9 @@ export default defineNuxtConfig({
 								},
 				},
 				googleFonts: {
-								families: {
-												Poppins: [400, 500, 700],
+								families: {												
 												Montserrat: [400, 500, 700],
+												'Source+Sans+3': [400, 500, 700]
 								}
 				}
 })
