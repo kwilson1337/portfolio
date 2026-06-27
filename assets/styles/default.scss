@@ -52,7 +52,8 @@ input,
 select,
 textarea {
     border-radius: rem(8);
-    width: 100%;
+    display: block;
+    max-width: 100%;        
     border: 1px solid darken($color1, 5%);
     height: rem(40);
     padding: rem(5) rem(15);    

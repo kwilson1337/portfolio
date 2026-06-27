@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
             firstName: body.firstName,
             lastName: body.lastName,
             email: body.email,
-            details: body.details
+            details: body.details            
         })
         
         return { 
@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
         throw createError({
             statusCode: 500,
             success: false,
-            statusMessage: 'Failed to send email',
+            statusMessage: 'Failed to send email. Please try again',
             errorMessage: error.message
         })
     }

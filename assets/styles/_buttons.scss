@@ -14,6 +14,10 @@
         display: block;
         text-align: center;
     }
+
+    &:disabled {
+        cursor: unset;      
+    }
  
     
     &.--button1 {
@@ -51,6 +55,11 @@
 
         &:hover {
             background-color: $color2;
+        }
+
+        &:disabled {
+            background-color: gray;
+            color: #333;
         }
     }
 }
