@@ -1,12 +1,12 @@
 <template>
-    <div 
-        ref="mobileMenu" 
+    <div
+        ref="mobileMenu"
         class="mobile-menu"
         :class="{ '--active' : menuIsScrolled }"
     >
         <Container>
             <div class="mobile-menu__inner">
-                <div class="mobile-menu__logo">                    
+                <div class="mobile-menu__logo">
                     <Logo @logo:click="resetMenu" />
                 </div>
 
@@ -80,28 +80,28 @@ const toggleMenu = () => {
 
 const mobileMenu = ref(null)
 const menuIsScrolled = ref(false)
-const addClassAfterScroll = (    
-    scrollPoint = 500
+const addClassAfterScroll = (
+	scrollPoint = 500
 ) => {
-    const buffer = 30
+	const buffer = 30
 
-    const update = () => {        
-        const currentScroll = Number.parseInt(window.scrollY);
-        
-        if (currentScroll >= scrollPoint) {            
-            menuIsScrolled.value = true
-        } else if (currentScroll < (scrollPoint - buffer)) {                        
-            menuIsScrolled.value = false
-        }
-    };
+	const update = () => {
+		const currentScroll = Number.parseInt(window.scrollY);
 
-    window.addEventListener('scroll', update, { passive: true })
-    update()
+		if (currentScroll >= scrollPoint) {
+			menuIsScrolled.value = true
+		} else if (currentScroll < (scrollPoint - buffer)) {
+			menuIsScrolled.value = false
+		}
+	};
+
+	window.addEventListener('scroll', update, { passive: true })
+	update()
 };
 
 let cleanUp
-onMounted(() => {    
-    cleanUp = addClassAfterScroll(mobileMenu.value.clientHeight)
+onMounted(() => {
+	cleanUp = addClassAfterScroll(mobileMenu.value.clientHeight)
 })
 onUnmounted(cleanUp)
 </script>
@@ -111,9 +111,9 @@ onUnmounted(cleanUp)
     position: relative;
     z-index: 3;
     transition: .2s ease-in-out all;
-    border-bottom: 1px solid transparent;    
+    border-bottom: 1px solid transparent;
 
-    
+
     &.--active {
         border-bottom: 1px solid $color3;
 
@@ -130,7 +130,7 @@ onUnmounted(cleanUp)
         }
 
         .mobile-menu__logo {
-            max-width: rem(200);           
+            max-width: rem(200);
         }
     }
 
@@ -147,7 +147,7 @@ onUnmounted(cleanUp)
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        gap: 12px;        
+        gap: 12px;
         height: rem(40);
         cursor: pointer;
 

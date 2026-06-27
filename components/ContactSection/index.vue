@@ -3,8 +3,8 @@
         <Container>
             <div class="kw-contact-section__inner">
                 <div class="kw-contact-section__grid">
-                    <div class="kw-contact-section__col --left">                                                
-                        <FlowerAnimation :is-small="true" />                        
+                    <div class="kw-contact-section__col --left">
+                        <FlowerAnimation :is-small="true" />
                     </div>
                     <div class="kw-contact-section__col --right">
                         <h2 class="h1">{{ props.title }}</h2>
@@ -23,14 +23,14 @@ import Container from '@/components/Container'
 import FlowerAnimation from '@/components/FlowerAnimation'
 
 const props = defineProps({
-    title: {
-        type: String,
-        default: `Let's Grow Together`
-    },
-    desc: {
-        type: String,
-        default: `We bridge the gap between architectural precision and organic vitality. Reach out to start your sustainable design journey.`
-    }
+	title: {
+		type: String,
+		default: 'Let\'s Grow Together'
+	},
+	desc: {
+		type: String,
+		default: 'We bridge the gap between architectural precision and organic vitality. Reach out to start your sustainable design journey.'
+	}
 })
 </script>
 

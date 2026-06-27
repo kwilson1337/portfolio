@@ -2,7 +2,7 @@
     <div class="header-logo">
         <div class="header-logo__inner" @mouseenter="onEnter">
             <h1>
-                <NuxtLink to="/" @click="emits('logo:click')" class="header-logo__link">                  
+                <NuxtLink to="/" class="header-logo__link" @click="emits('logo:click')">
                     <img
                         src="/images/logo/dd-logo-white-v2.png"
                         alt="Discover Nuxt"
@@ -23,7 +23,7 @@ const emits = defineEmits(['logo:click'])
 
 const transitionFirst = ref(null)
 const transitionSecond = ref(null)
-const onEnter = () => {    
+const onEnter = () => {
 	const firstTl = gsap.timeline({ delay: 0 })
 	const secondTl = gsap.timeline({ delay: .3 })
 
@@ -45,7 +45,7 @@ const onEnter = () => {
 .header-logo {
     position: relative;
 
-    h1 {        
+    h1 {
         margin: 0px;
         cursor: pointer;
     }
@@ -57,7 +57,7 @@ const onEnter = () => {
     img {
         max-width: 100%;
     }
- 
+
     &__transition {
         position: absolute;
         top: 0px;

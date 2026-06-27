@@ -9,8 +9,9 @@
                 </div>
 
                 <div class="kw-capabilities__grid">
-                    <CapabilityCard 
+                    <CapabilityCard
                         v-for="card in capabilities"
+                        :key="card.title"
                         :card-details="card"
                     />
                 </div>
@@ -25,28 +26,28 @@ import CapabilityCard from './CapabilityCard.vue';
 import BackgroundTexture from '@/components/BackgroundTexture'
 
 const props = defineProps({
-    sectionTitle: {
-        type: String,
-        default: 'Capabilities'
-    }
+	sectionTitle: {
+		type: String,
+		default: 'Capabilities'
+	}
 })
 
 const capabilities = [
-    {
-        icon: 'mdi:computer',
-        title: 'Digital Ecosystems',
-        desc: 'Creating fluid, scalable design frameworks that adapt to any environment, from mobile screens to complex enterprise platforms.'
-    },
-    {
-        icon: 'mdi:computer',
-        title: 'Organic Brand Strategy',
-        desc: 'Creating fluid, scalable design frameworks that adapt to any environment, from mobile screens to complex enterprise platforms.'
-    },
-    {
-        icon: 'mdi:computer',
-        title: 'Adaptive Design Systems',
-        desc: 'Creating fluid, scalable design frameworks that adapt to any environment, from mobile screens to complex enterprise platforms.'
-    }
+	{
+		icon: 'mdi:computer',
+		title: 'Digital Ecosystems',
+		desc: 'Creating fluid, scalable design frameworks that adapt to any environment, from mobile screens to complex enterprise platforms.'
+	},
+	{
+		icon: 'mdi:computer',
+		title: 'Organic Brand Strategy',
+		desc: 'Creating fluid, scalable design frameworks that adapt to any environment, from mobile screens to complex enterprise platforms.'
+	},
+	{
+		icon: 'mdi:computer',
+		title: 'Adaptive Design Systems',
+		desc: 'Creating fluid, scalable design frameworks that adapt to any environment, from mobile screens to complex enterprise platforms.'
+	}
 ]
 </script>
 
@@ -55,7 +56,7 @@ const capabilities = [
     background-color: $color2;
     position: relative;
     z-index: 0;
-    
+
     &__inner {
         position: relative;
         z-index: 1;

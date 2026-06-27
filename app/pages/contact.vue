@@ -1,5 +1,5 @@
 <template>
-    <section class="kw-contact-page">        
+    <section class="kw-contact-page">
          <BackgroundTexture />
         <Container>
              <div class="kw-contact-page__inner">
@@ -12,11 +12,11 @@
                         <p>We bridge the gap between architectural precision and organic vitality. Reach out to start your sustainable design journey.</p>
                         <ContactForm />
                     </div>
-                </div>            
-            </div>   
-        </Container>            
+                </div>
+            </div>
+        </Container>
     </section>
-    
+
 </template>
 
 <script setup>
@@ -29,7 +29,7 @@ import BackgroundTexture from '@/components/BackgroundTexture'
 <style lang="scss" scoped>
 .kw-contact-page {
     padding: 0px;
-    padding-bottom: rem(80);    
+    padding-bottom: rem(80);
     position: relative;
 
     &__inner {

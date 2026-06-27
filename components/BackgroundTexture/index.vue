@@ -1,6 +1,6 @@
 <template>
     <div class="bg-texture">
-        <div class="bg-texture__texture"></div>
+        <div class="bg-texture__texture"/>
     </div>
 </template>
 

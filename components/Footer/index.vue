@@ -8,12 +8,13 @@
                 <div class="kw-footer__links">
                     <NuxtLink
                         v-for="link in siteLinks"
+                        :key="link"
                         :href="link.url"
                     >
                         {{ link.title }}
                     </NuxtLink>
                 </div>
-            </div>            
+            </div>
         </Container>
 
         <div class="kw-footer__bottom-bar">
@@ -23,9 +24,9 @@
 
                     <NuxtLink to="/">
                         Deeply Designs
-                    </NuxtLink>                    
-                </div>                
-            </Container>           
+                    </NuxtLink>
+                </div>
+            </Container>
         </div>
     </footer>
 </template>
@@ -50,9 +51,9 @@ const currentYear = new Date().getFullYear();
 
     &__inner {
         display: flex;
-        align-items: center;   
-        flex-direction: column;     
-        justify-content: center;           
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
     }
 
     &__logo {
@@ -63,11 +64,11 @@ const currentYear = new Date().getFullYear();
         flex: 1;
         display: flex;
         justify-content: center;
-        gap: rem(20);     
-        margin-top: rem(15);  
+        gap: rem(20);
+        margin-top: rem(15);
     }
 
-    &__bottom-bar {       
+    &__bottom-bar {
         margin-top: rem(15);
         background-color: darken($color2, 5%);
         padding: rem(10) 0;

@@ -9,7 +9,7 @@
                     </a>
                 </div>
             </div>
-        </Container>        
+        </Container>
     </section>
 </template>
 
@@ -17,23 +17,23 @@
 import Container from '@/components/Container'
 
 const props = defineProps({
-    title: {
-        type: String,
-        default: 'Start your new project today'
-    },
-    buttonInfo: {
-        type: Object,
-        default: () => ({
-            title: 'Start project',
-            link: '#'
-        })
-    }   
+	title: {
+		type: String,
+		default: 'Start your new project today'
+	},
+	buttonInfo: {
+		type: Object,
+		default: () => ({
+			title: 'Start project',
+			link: '#'
+		})
+	}
 })
 </script>
 
 <style lang="scss" scoped>
 .kw-thin-cta {
-    padding: rem(20) 0px;    
+    padding: rem(20) 0px;
     background-color: $color3;
 
     &__inner {

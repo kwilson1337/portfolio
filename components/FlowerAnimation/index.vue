@@ -1,9 +1,9 @@
 <template>
     <div class="flower-animation" :class="{ '--small' : props.isSmall }">
         <div class="flower-animation__inner">
-            <div class="flower-animation__highlight"></div>    
-            <div id="animateFlower" class="flower-animation__flower"></div>
-        </div>           
+            <div class="flower-animation__highlight"/>
+            <div id="animateFlower" class="flower-animation__flower"/>
+        </div>
     </div>
 </template>
 
@@ -12,14 +12,14 @@ import { useAnimateFlower } from '../../composables/useAnimateFlower'
 const animateFlower = useAnimateFlower()
 
 const props = defineProps({
-    isSmall: {
-        type: Boolean,
-        default: false
-    }
+	isSmall: {
+		type: Boolean,
+		default: false
+	}
 })
 
-onMounted(() => {  
-    animateFlower.animateFlower('animateFlower')                                 
+onMounted(() => {
+	animateFlower.animateFlower('animateFlower')
 })
 </script>
 
@@ -47,14 +47,14 @@ onMounted(() => {
 
     &__flower {
         width: rem(600);
-        height: rem(600);     
-        position: relative;   
+        height: rem(600);
+        position: relative;
 
         .--small & {
             width: rem(300);
             height: rem(300);
         }
-        
+
         @include mq('md') {
             width: rem(300);
             height: rem(300);

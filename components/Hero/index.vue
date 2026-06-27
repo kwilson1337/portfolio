@@ -1,14 +1,14 @@
 <template>
     <section class="kw-hero-section">
-        <BackgroundTexture />        
+        <BackgroundTexture />
        <Container>
             <div class="kw-hero-section__inner">
-                <div class="kw-hero-section__col --left">   
+                <div class="kw-hero-section__col --left">
                     <h1 class="text-glow">
                         Helping small business grow
                         <span>deeply.</span>
-                    </h1>     
-                    <h2>We bridge the gap between structured precision and natural elegance to create identities that breathe and evolve.</h2>       
+                    </h1>
+                    <h2>We bridge the gap between structured precision and natural elegance to create identities that breathe and evolve.</h2>
 
                     <div class="kw-hero-section__actions">
                         <NuxtLink class="kw-button --button1" to="/contact">
@@ -16,34 +16,30 @@
                         </NuxtLink>
                         <NuxtLink class="kw-button --button2">
                             Our Work
-                        </NuxtLink>                       
+                        </NuxtLink>
                     </div>
                 </div>
                 <div class="kw-hero-section__col --right">
-                    <FlowerAnimation />                  
-                </div>            
+                    <FlowerAnimation />
+                </div>
             </div>
             <div class="kw-hero-section__scroll">SCROLL</div>
-       </Container>            
+       </Container>
     </section>
 
     <RootsAnimation />
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
 import Container from '@/components/Container'
 import RootsAnimation from '@/components/Hero/RootsAnimation.vue'
 import FlowerAnimation from '@/components/FlowerAnimation'
 import BackgroundTexture from '@/components/BackgroundTexture'
-
-const headerText = 'Design your brand,'
-const headerAccent = 'deeply'
 </script>
 
 <style lang="scss" scoped>
 .kw-hero-section {
-    position: relative;    
+    position: relative;
     height: calc(75vh + 60px);
     padding-top: rem(0);
 
@@ -52,10 +48,10 @@ const headerAccent = 'deeply'
         padding-top: rem(40);
         padding-bottom: rem(100);
     }
-      
+
     &__inner {
-        display: flex;      
-        align-items: center;  
+        display: flex;
+        align-items: center;
 
         @include mq('sm') {
             display: block;
@@ -65,19 +61,19 @@ const headerAccent = 'deeply'
     &__col {
         flex-basis: 40%;
         position: relative;
-               
+
         &.--left {
-            flex-basis: 60%;      
+            flex-basis: 60%;
 
             @include mq('sm') {
                 text-align: center
-            }      
+            }
         }
 
         &.--right {
             @include mq('sm') {
                 display: flex;
-                justify-content: center;                
+                justify-content: center;
             }
         }
 
@@ -90,7 +86,7 @@ const headerAccent = 'deeply'
             span {
                 font-style: italic;
                 color: $color3;
-                @include title-decorator($color3);                
+                @include title-decorator($color3);
             }
         }
 
@@ -98,26 +94,26 @@ const headerAccent = 'deeply'
             color: $color3;
             font-size: 18px;
             line-height: 28px;
-            font-weight: 400;            
+            font-weight: 400;
         }
 
         #threejs-container-ANIMATION_15 canvas {
             display: block;
             width: 100% !important;
             height: 100% !important;
-        }    
+        }
     }
 
     &__actions {
         margin-top: rem(40);
         display: flex;
         gap: rem(20);
-       
+
         @include mq('sm') {
             flex-direction: column;
             gap: rem(15);
         }
-        
+
     }
 
     &__highlight {
@@ -134,9 +130,9 @@ const headerAccent = 'deeply'
 
     &__flower {
         width: rem(600);
-        height: rem(600);     
-        position: relative;   
-        
+        height: rem(600);
+        position: relative;
+
         @include mq('md') {
             width: rem(300);
             height: rem(300);
@@ -167,5 +163,5 @@ const headerAccent = 'deeply'
             transform: translateX(-50%);
         }
     }
-}            
+}
 </style>

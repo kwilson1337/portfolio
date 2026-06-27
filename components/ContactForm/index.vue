@@ -1,40 +1,40 @@
 <template>
     <div class="kw-contact-form">
-        <div class="kw-contact-form__inner">            
+        <div class="kw-contact-form__inner">
             <form ref="contactForm">
                 <div class="kw-contact-form__form-content">
                     <div class="kw-contact-form__row">
-                        <div class="kw-contact-form__input-container">                            
-                            <input 
-                                v-model="formFields.firstName" 
-                                required 
-                                type="text"      
-                                id="firstName"      
+                        <div class="kw-contact-form__input-container">
+                            <input
+                                id="firstName"
+                                v-model="formFields.firstName"
+                                required
+                                type="text"
                                 placeholder
                                 :disabled="isLoading"
                             >
                             <label for="firstName">First name <span>*</span></label>
                         </div>
-                        <div class="kw-contact-form__input-container">                            
-                            <input 
-                                v-model="formFields.lastName" 
-                                required 
+                        <div class="kw-contact-form__input-container">
+                            <input
                                 id="lastName"
-                                type="text"     
-                                placeholder                        
+                                v-model="formFields.lastName"
+                                required
+                                type="text"
+                                placeholder
                                 :disabled="isLoading"
                             >
                             <label for="lastName">Last name <span>*</span></label>
                         </div>
                     </div>
-                    
+
                     <div class="kw-contact-form__row">
-                        <div class="kw-contact-form__input-container">                            
-                            <input 
-                                v-model="formFields.email" 
-                                required 
-                                type="email" 
+                        <div class="kw-contact-form__input-container">
+                            <input
                                 id="emailAddy"
+                                v-model="formFields.email"
+                                required
+                                type="email"
                                 placeholder
                                 :disabled="isLoading"
                             >
@@ -43,24 +43,24 @@
                     </div>
 
                     <div class="kw-contact-form__row">
-                        <div class="kw-contact-form__input-container --details">                            
-                            <textarea 
-                                v-model="formFields.details" 
-                                required 
+                        <div class="kw-contact-form__input-container --details">
+                            <textarea
                                 id="details"
+                                v-model="formFields.details"
+                                required
                                 placeholder
                                 :disabled="isLoading"
-                            ></textarea>
+                            />
                             <label for="details">Tell us about your project <span>*</span></label>
                         </div>
                     </div>
 
-                    <div class="kw-contact-form__row">                        
-                        <button 
-                            @click.prevent="sendMail" 
+                    <div class="kw-contact-form__row">
+                        <button
                             class="kw-button --button4"
                             :disabled="disableSubmit"
                             type="submit"
+                            @click.prevent="sendMail"
                         >
                             Submit
                         </button>
@@ -70,10 +70,10 @@
                         <div v-if="isLoading" class="kw-contact-form__animation">
                             <LoadingAnimation />
                         </div>
-                        
+
                         <p v-if="responseMessage">{{ responseMessage }}</p>
                     </div>
-                </div>            
+                </div>
             </form>
         </div>
     </div>
@@ -83,52 +83,52 @@
 import LoadingAnimation from '@/components/LoadingAnimation'
 
 const formFields = ref({
-    firstName: '',
-    lastName: '',
-    email: '',
-    details: ''
+	firstName: '',
+	lastName: '',
+	email: '',
+	details: ''
 })
 
 const isLoading = ref(false)
 const responseMessage = ref('')
 const contactForm = ref()
 
-const disableSubmit = computed(() => {        
-    return isLoading.value ||
+const disableSubmit = computed(() => {
+	return isLoading.value ||
             !formFields.value.firstName ||
             !formFields.value.lastName ||
             !formFields.value.email ||
-            !formFields.value.details            
+            !formFields.value.details
 })
 
-const sendMail = async () => {    
-    if(!contactForm?.value.checkValidity()) return 
+const sendMail = async () => {
+	if(!contactForm?.value.checkValidity()) return
 
-    try {
-        responseMessage.value = ''
-        isLoading.value = true        
+	try {
+		responseMessage.value = ''
+		isLoading.value = true
 
-        const response = await $fetch('/api/send-email', {
-            method: 'POST',
-            body: {
-                firstName: formFields.value.firstName,
-                lastName: formFields.value.lastName,        
-                details: formFields.value.details,
-                email: formFields.value.email
-            },
-        })    
+		const response = await $fetch('/api/send-email', {
+			method: 'POST',
+			body: {
+				firstName: formFields.value.firstName,
+				lastName: formFields.value.lastName,
+				details: formFields.value.details,
+				email: formFields.value.email
+			},
+		})
 
-        responseMessage.value = response.statusMessage        
+		responseMessage.value = response.statusMessage
 
-    } catch (error) {    
-        responseMessage.value = error.statusMessage    
-    } finally {
-        isLoading.value = false
-        formFields.value.firstName = ''
-        formFields.value.lastName = ''
-        formFields.value.email = ''
-        formFields.value.details = ''
-    }
+	} catch (error) {
+		responseMessage.value = error.statusMessage
+	} finally {
+		isLoading.value = false
+		formFields.value.firstName = ''
+		formFields.value.lastName = ''
+		formFields.value.email = ''
+		formFields.value.details = ''
+	}
 }
 </script>
 
@@ -151,7 +151,7 @@ const sendMail = async () => {
             width: 100%;
             cursor: pointer;
         }
-       
+
         &.--message {
             text-align: center;
 
@@ -160,8 +160,8 @@ const sendMail = async () => {
                 color: $color3;
                 margin: 0px;
                 padding: rem(8) rem(16);
-                background-color: $color2;   
-                border-radius: rem(20);             
+                background-color: $color2;
+                border-radius: rem(20);
             }
         }
     }
@@ -181,8 +181,8 @@ const sendMail = async () => {
             font-weight: 500;
             transform: translateY(-50%);
             left: rem(10);
-            z-index: 0;         
-            transition: .2s ease-in-out all;   
+            z-index: 0;
+            transition: .2s ease-in-out all;
         }
 
         span {
@@ -192,7 +192,7 @@ const sendMail = async () => {
         &.--details {
             label {
                 top: rem(15);
-                transform: translateY(0);                
+                transform: translateY(0);
             }
 
             textarea:focus,
@@ -206,7 +206,7 @@ const sendMail = async () => {
         input:focus,
         input:not(:placeholder-shown) {
             & + label {
-                top: -10px;                
+                top: -10px;
             }
         }
     }

@@ -1,7 +1,7 @@
 <template>
     <div class="kw-capability-card">
         <div class="kw-capability-card__inner">
-            <div class="kw-capability-card__icon">                                 
+            <div class="kw-capability-card__icon">
                 <Icon :name="cardDetails.icon" />
             </div>
             <div class="kw-capability-card__title">
@@ -15,11 +15,11 @@
 </template>
 
 <script setup>
-const props = defineProps({
-    cardDetails: {
-        type: Object,
-        default: () => ({})
-    }
+defineProps({
+	cardDetails: {
+		type: Object,
+		default: () => ({})
+	}
 })
 </script>
 
@@ -29,8 +29,8 @@ const props = defineProps({
     border-radius: rem(8);
 
     &__inner {
-        padding: rem(20); 
-        color: $color4;       
+        padding: rem(20);
+        color: $color4;
     }
 
     &__icon {
