@@ -181,7 +181,7 @@ const sendMail = async () => {
             font-weight: 500;
             transform: translateY(-50%);
             left: rem(10);
-            z-index: 1;         
+            z-index: 0;         
             transition: .2s ease-in-out all;   
         }
 
