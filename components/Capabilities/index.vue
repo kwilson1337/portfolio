@@ -24,6 +24,7 @@
 import Container from '@/components/Container'
 import CapabilityCard from './CapabilityCard.vue';
 import BackgroundTexture from '@/components/BackgroundTexture'
+import { capabilities } from '@/constants'
 
 const props = defineProps({
 	sectionTitle: {
@@ -32,23 +33,7 @@ const props = defineProps({
 	}
 })
 
-const capabilities = [
-	{
-		icon: 'mdi:computer',
-		title: 'Digital Ecosystems',
-		desc: 'Creating fluid, scalable design frameworks that adapt to any environment, from mobile screens to complex enterprise platforms.'
-	},
-	{
-		icon: 'mdi:computer',
-		title: 'Organic Brand Strategy',
-		desc: 'Creating fluid, scalable design frameworks that adapt to any environment, from mobile screens to complex enterprise platforms.'
-	},
-	{
-		icon: 'mdi:computer',
-		title: 'Adaptive Design Systems',
-		desc: 'Creating fluid, scalable design frameworks that adapt to any environment, from mobile screens to complex enterprise platforms.'
-	}
-]
+
 </script>
 
 <style lang="scss" scoped>

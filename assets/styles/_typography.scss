@@ -1,6 +1,6 @@
 .h1,
 h1 {
-    font-size: 2em;
+    @include rfs(36, 64);
     font-weight: 700;
     font-family: $font1;
     margin: 0px;

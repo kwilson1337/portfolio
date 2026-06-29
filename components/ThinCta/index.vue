@@ -43,8 +43,18 @@ const props = defineProps({
         gap: rem(20);
         color: $color4;
 
+        @include mq('md') {
+            display: block;
+            text-align: center;
+        }
+
         .h1 {
             margin: 0px;
+            font-size: 2rem;
+
+            @include mq('md') {
+                margin-bottom: rem(15);
+            }
         }
     }
 }

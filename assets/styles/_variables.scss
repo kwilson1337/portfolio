@@ -7,6 +7,29 @@ $color3: rgb(180, 205, 184);
 $color4: #213528;
 $color5: #d87055;
 
+$colors: (
+	'color1' 	: $color1,
+	'color2' 	: $color2,
+	'color3' 	: $color3,
+    'color4' 	: $color4,
+    'color5' 	: $color5,  
+
+    'white'     : $white,
+    'black'     : $black,    
+);
+
+// -- Loop through gutenburg colors and asigns classes
+// -- Can be used anywhere on site. 
+@each $name, $color in $colors {    
+    .--color-#{$name} {
+        color: $color !important;
+    }
+
+    .--background-#{$name} {
+        background-color: $color !important;
+    }
+}
+
 $transition: .2s ease-in-out all;
 
 $nurocorColors: (
